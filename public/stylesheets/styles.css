@@ -1,0 +1,37 @@
+:root {
+    --green: #008000;
+    --grey: #333333;
+  }
+  
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    padding: 0 0.5em;
+  }
+  
+  h1,
+  h2 {
+    color: var(--green);
+  }
+  
+  .container {
+    margin-top: 4rem;
+  }
+  
+  .text {
+    margin-top: 0.5em;
+    color: var(--grey);
+    font-size: larger;
+  }
+  
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+  }
+  
+  .footer > .copyright {
+    margin: 1em;
+  }
