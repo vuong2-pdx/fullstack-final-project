@@ -19,5 +19,9 @@
     "parser": "^0.1.4",
     "path": "^0.12.7",
     "pug": "^3.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mongoose": "^6.7.2"
   }
 }

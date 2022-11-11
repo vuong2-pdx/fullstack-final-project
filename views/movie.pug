@@ -1,0 +1,20 @@
+//- Rough Draft of all page elements
+
+doctype html
+html
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+        h1 #{title}
+        img(src=poster alt='image of a kitten' width='600' height='300')
+        //- Change rating into star rating using CSS
+        p #{rating}
+        p #{review}
+        if watched
+            p="Watched"
+        else
+            p="Not watched"
+        //- Add a button to take the user to the streaming service 
+    include includes/footer.pug

@@ -1,0 +1,9 @@
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.figure {
+  width: 200px;
+  height: 60%;
+}
