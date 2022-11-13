@@ -1,0 +1,18 @@
+doctype html
+html
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      h1 #{heading}    
+      h2 #{subheading}      
+      section.text Search Results
+      ol#results
+        each item in results
+          li
+            | Title: #{item.name}
+            ul
+              li Id: #{item.id}
+              li Type: #{item.type}
+    include includes/footer.pug

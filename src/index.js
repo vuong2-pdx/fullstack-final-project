@@ -1,4 +1,6 @@
+// import {searchTest} from './search.js'
 const express = require('express');
+const search = require('./search');
 const app = express();
 const port = process.env.PORT || 5001;
 
@@ -10,6 +12,15 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Main',
     heading: 'Welcome to this page built with Pug templates!',
+  });
+});
+
+app.get('/search', async (req, res) => {
+  res.render('search', {
+    title: 'Search',
+    heading: 'Search for a movie or TV show',
+    subheading: 'Enter in your search query',
+    results: await search.renderResults()
   });
 });
 
