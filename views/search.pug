@@ -15,4 +15,6 @@ html
             ul
               li Id: #{item.id}
               li Type: #{item.type}
+                  each source in item.sources
+                    li=source
     include includes/footer.pug

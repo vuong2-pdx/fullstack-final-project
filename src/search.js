@@ -2,7 +2,7 @@ const axios = require('axios')
 
 // The search functionality allows the user to search for movies or TV shows, fetch the information from the APIs, display the information and show which streaming services the user can use to watch it
 
-const nameSearchQuery = 'Stranger Things'
+const nameSearchQuery = 'Abbott Elementary'
 const encodedNameSearchQuery = encodeURIComponent(nameSearchQuery)
 
 const OMDB_API_KEY = 'bf001c'
@@ -29,7 +29,7 @@ const formatTitles = (searchResult) => {
         name: searchResult.name,
         id: searchResult.id,
         type: formatType(searchResult.type),
-        sources: getSources(searchResult.id)
+        sources: []
     }
 }
 
@@ -37,36 +37,44 @@ const formatSources = (source) => {
     return `Watch on ${source.name} at ${source.web_url}`
 }
 
-const getSources = async (id) => {
-    let sourcesArray = []
-
-    await axios
-    .get(`${WATCHMODE_SOURCE_SEARCH_START}${id}${WATCHMODE_SOURCE_SEARCH_END}`)
+const getSources = async (title) => {
+    let sources = []
+    const response = await axios
+    .get(`${WATCHMODE_SOURCE_SEARCH_START}${title.id}${WATCHMODE_SOURCE_SEARCH_END}`)
     .then((response) => response.data)
-    .then((response) => {
-        return response.map((source) => formatSources(source))
-        // mappedSources?.forEach((source) => sourcesArray.push(source))
-    })
+    .then((response) => response.map((source) => formatSources(source)))
     .catch((e) => {
         console.log(`Error while getting sources: ${e}`)
     })
-    return sourcesArray ? sourcesArray : []
+
+    // copy response array to sources array so we can return it
+    sources = response.map((x) => (x))
+    return sources
 }
 
 const renderResults = async () => {
     let results = []
 
-    await axios
+    const response = await axios
     .get(WATCHMODE_NAME_SEARCH)
     .then((response) => response.data.title_results)
-    .then((response) => {
-        const mappedTitles = response.map(formatTitles)
-        mappedTitles?.forEach((title) => results.push(title))
-    })
+    .then((response) => 
+        response.map(formatTitles)
+    )
     .catch((e) => {
         console.log(`Error while rendering search results: ${e}`)
     })
-    console.log(results)
+    
+    // copy response to results
+    results = response.map((x) => (x))
+
+    // iterate through results and push it onto the current title's sources array
+    for (i = 0; i < results.length; i++) {
+        let sourcesResults = []
+        const sourcesResponse = await getSources(results[i])
+        sourcesResults = sourcesResponse.map(x => x);
+        sourcesResults.forEach(source => results[i].sources.push(source))
+    }
     return results
 }
 
