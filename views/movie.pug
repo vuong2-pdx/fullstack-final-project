@@ -3,18 +3,20 @@
 doctype html
 html
   include includes/head.pug
+  link(rel='stylesheet', href='./styles.css', type='text/css')
   body
     header
       include includes/navbar.pug
-    main.container
-        h1 #{title}
-        img(src=poster alt='image of a kitten' width='600' height='300')
+    main.container.bg-light.border.rounded.w-50.mx-auto
+        h1.text-center #{title}
+        img.mx-auto.d-block(src=poster alt='movie poster' width='185' height='278')
         //- Change rating into star rating using CSS
-        p #{rating}
-        p #{review}
-        if watched
-            p="Watched"
-        else
-            p="Not watched"
+        div.d-flex
+          p.w-50.text-center #{rating}
+          if watched
+            p.w-50.text-center="Watched"
+          else
+            p.w-50.text-center="Not watched"
+        p.text-center #{review}
         //- Add a button to take the user to the streaming service 
     include includes/footer.pug

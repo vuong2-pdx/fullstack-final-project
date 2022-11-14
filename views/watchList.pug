@@ -1,14 +1,15 @@
 doctype html
 html
   include includes/head.pug
+  link(rel='stylesheet', href='./styles.css')
   body
     header
       include includes/navbar.pug
     main.container
-        h1 #{heading}
+        h1.text-center #{heading}
         section.flex-container#results 
             each item in results 
                 div.figure.m-4
-                  a(href=movieID)
-                    img(src=item alt='image of a kitten' width='200' height='300')
+                  a(href=`WatchList/${item.movieID}`)
+                    img(src=item.poster alt='movie poster' width='185' height='278')
     include includes/footer.pug
