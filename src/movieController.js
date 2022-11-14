@@ -37,12 +37,13 @@ async function removeMovie(id) {
 }
 
 //Retrieve the info of one movie
-async function findMovie(movie) {
-  if (!movie.movieID) {
+async function findMovie(id) {
+  console.log(`FROM CONTROLLER: ${id}`);
+  if (!id) {
     throw new Error("MovieID field was empty");
   }
 
-  const result = await Movie.findOne({ movieID: movie.movieID }).exec(); //returns query
+  const result = await Movie.findOne({ movieID: id }).exec(); //returns query
   if (!result) {
     throw new Error("Movie does not exist");
   }
@@ -57,6 +58,7 @@ async function retrieveAllMovies() {
     throw new Error("There are no saved movies");
   }
   console.log("Success.");
+  //   console.log(result);
   return result;
 }
 

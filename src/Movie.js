@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 
 const movieSchema = mongoose.Schema({
   movieID: { type: Number, required: [true, "Please add a movie ID"] },
-  poster: String,
   title: String,
+  poster: String,
   rating: Number,
   review: String,
   watched: Boolean,

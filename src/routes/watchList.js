@@ -1,30 +1,50 @@
-var express = require("express");
-var router = express.Router();
+const e = require("express");
+const express = require("express");
+const router = express.Router();
+
+const movieController = require("../movieController");
 
 router.get("/", (req, res) => {
-  res.render("watchList", {
-    heading: "Watch List",
-    movieID: "/WatchList/123456",
-    results: [
-      "https://placekitten.com/600/300",
-      "https://placekitten.com/600/300",
-      "https://placekitten.com/600/300",
-      "https://placekitten.com/600/300",
-      "https://placekitten.com/600/300",
-      "https://placekitten.com/600/300",
-    ],
-  });
+  const promise = movieController.retrieveAllMovies();
+  promise.then(
+    (response) => {
+      res.render("watchList", {
+        heading: "Watch List",
+        results: response,
+      });
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
 });
 
-router.get("/*", (req, res) => {
-  res.render("movie", {
-    title: "Breaking Bad",
-    poster: "https://placekitten.com/600/300",
-    rating: "5",
-    review:
-      "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
-    watched: true,
-  });
+//Dynamic routing
+router.get("/:id", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  console.log(req.params.id);
+  console.log(parsedId);
+
+  if (!isNaN(parsedId)) {
+    console.log("inside if statement");
+    const promise = movieController.findMovie(parsedId);
+    promise.then(
+      (response) => {
+        res.render("movie", {
+          title: response.title,
+          poster: response.poster,
+          rating: response.rating,
+          review: response.review,
+          watched: response.watched,
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  } else {
+    res.end();
+  }
 });
 
 module.exports = router;
