@@ -1,0 +1,23 @@
+// Tram Vuong
+// Display search form and search results
+
+doctype html
+html
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      h1 #{heading}    
+      h2 #{subheading}      
+      section.text Search Results
+      ol#results
+        each item in results
+          li
+            | Title: #{item.name}
+            ul
+              li Id: #{item.id}
+              li Type: #{item.type}
+                  each source in item.sources
+                    li=source
+    include includes/footer.pug

@@ -1,13 +1,13 @@
-/** @format */
-
-const express = require('express');
+// import {searchTest} from './search.js'
+const express = require("express");
+const search = require("./search");
 const app = express();
 const port = process.env.PORT || 5001;
 const { randomize } = require('./randomize');
 
-app.set('views', __dirname + '/../' + 'views');
-app.set('view engine', 'pug');
-app.use(express.static(__dirname + '/public'));
+app.set("views", __dirname + "/../" + "views");
+app.set("view engine", "pug");
+app.use(express.static(__dirname + "/public"));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + "/../" + "/public"));
@@ -47,6 +47,15 @@ app.get('/about', (req, res) => {
     title: 'About',
     heading: 'About Page',
     subheading: 'Sub-Heading #1',
+  });
+});
+
+app.get("/search", async (req, res) => {
+  res.render("search", {
+    title: "Search",
+    heading: "Search for a movie or TV show",
+    subheading: "Enter in your search query",
+    results: await search.renderResults(),
   });
 });
 
