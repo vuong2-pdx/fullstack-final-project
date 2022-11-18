@@ -1,6 +1,9 @@
+/** @format */
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5001;
+const { randomize } = require('./randomize');
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
@@ -10,6 +13,19 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Main',
     heading: 'Welcome to this page built with Pug templates!',
+  });
+});
+
+app.get('/random', async (req, res) => {
+  const data = await randomize();
+  console.log(data);
+  res.render('random', {
+    title: 'Randomize',
+    heading: 'Randomize page',
+    subheading: data.Title,
+    poster: data.Poster,
+    year: data.Year,
+    plot: data.Plot,
   });
 });
 
