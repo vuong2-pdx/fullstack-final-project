@@ -1,9 +1,11 @@
+//These are all the methods that can be used to access the database
+
 const Movie = require("./Movie");
 
 //The "movie" argument is an object where the movieID field is required (see Movie.js)
 //If the field is left blank, these methods will throw an error.
 
-//Add a movie to the DB
+//Add a movie to the DB, movie is an JS object
 async function addMovie(movie) {
   if (!movie.movieID) {
     throw new Error("MovieID field was empty");
@@ -21,7 +23,7 @@ async function addMovie(movie) {
   console.log("Movie added.");
 }
 
-//Remove a movie from the DB
+//Remove a movie from the DB, is is a number
 async function removeMovie(id) {
   if (!id) {
     throw new Error("MovieID field was empty");
@@ -36,7 +38,7 @@ async function removeMovie(id) {
   console.log("Movie deleted.");
 }
 
-//Retrieve the info of one movie
+//Retrieve the info of one movie, id is a number
 async function findMovie(id) {
   console.log(`FROM CONTROLLER: ${id}`);
   if (!id) {
@@ -51,18 +53,17 @@ async function findMovie(id) {
   return result;
 }
 
-//Retrieve all movies saved in the DB
+//Retrieve all movies saved in the DB, returns a promise
 async function retrieveAllMovies() {
   const result = await Movie.find({});
   if (!result) {
     throw new Error("There are no saved movies");
   }
   console.log("Success.");
-  //   console.log(result);
   return result;
 }
 
-//Update a movie
+//Update a movie, movie is a JS object
 async function updateMovie(movie) {
   if (!movie.movieID) {
     throw new Error("MovieID field was empty");

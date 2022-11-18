@@ -1,5 +1,5 @@
-const e = require("express");
 const express = require("express");
+const app = express();
 const router = express.Router();
 
 const movieController = require("../movieController");
@@ -26,11 +26,10 @@ router.get("/:id", (req, res) => {
   console.log(parsedId);
 
   if (!isNaN(parsedId)) {
-    console.log("inside if statement");
     const promise = movieController.findMovie(parsedId);
     promise.then(
       (response) => {
-        res.render("movie", {
+        res.render("movieDisplay", {
           title: response.title,
           poster: response.poster,
           rating: response.rating,
@@ -43,6 +42,7 @@ router.get("/:id", (req, res) => {
       }
     );
   } else {
+    console.log("NAN");
     res.end();
   }
 });
