@@ -1,4 +1,6 @@
-//Movie Schema exported as a module
+// Viktoriya Petrova @ViktoriyaPetrova
+// Movie Schema exported as a module
+
 const mongoose = require("mongoose");
 
 const movieSchema = mongoose.Schema({

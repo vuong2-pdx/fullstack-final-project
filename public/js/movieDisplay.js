@@ -1,3 +1,6 @@
+// Viktoriya Petrova @ViktoriyaPetrova
+// Scrip to handle events for movieDisplay.pug
+
 $(document).ready(function () {
   $("#rating-container input:radio").click(function () {
     if ($(this).val() === "star1") {

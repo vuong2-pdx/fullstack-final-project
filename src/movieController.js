@@ -1,3 +1,6 @@
+// Viktoriya Petrova @ViktoriyaPetrova
+// Movie controller for the Movie schema
+
 //These are all the methods that can be used to access the database
 
 const Movie = require("./Movie");

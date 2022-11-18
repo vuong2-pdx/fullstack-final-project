@@ -1,3 +1,6 @@
+// Viktoriya Petrova @ViktoriyaPetrova
+// Module export that connects to Mongoose databse
+
 //Connect to MongoDB w/ Mongoose
 const mongoose = require("mongoose");
 MONGO_URI =
