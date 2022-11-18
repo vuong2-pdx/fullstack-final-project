@@ -1,0 +1,12 @@
+doctype html
+html
+  include includes/head.pug
+  body 
+    header 
+      include includes/navbar.pug
+    maim.container 
+      h1.text-center #{heading}
+      h3.text-center.mt-5 #{subheading}
+      img.mx-auto.d-block(src=poster, alt='poster' height='400' width='300')
+      p.text-center #{year}
+      p.w-75.mx-auto.text-center #{plot}
