@@ -1,6 +1,6 @@
-const axios = require("axios");
-
+// Tram Vuong
 // The search functionality allows the user to search for movies or TV shows, fetch the information from the APIs, display the information and show which streaming services the user can use to watch it
+const axios = require("axios");
 
 const nameSearchQuery = "Abbott Elementary";
 const encodedNameSearchQuery = encodeURIComponent(nameSearchQuery);
