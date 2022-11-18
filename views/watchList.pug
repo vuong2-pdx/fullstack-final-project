@@ -1,0 +1,17 @@
+//- Viktoriya Petrova @ViktoriyaPetrova
+//- Display all saved movies pug page
+
+doctype html
+html
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+        h1.text-center #{heading}
+        section.flex-container#results 
+            each item in results 
+                div.figure.m-4
+                  a(href=`WatchList/${item.movieID}`)
+                    img(src=item.poster alt='movie poster' width='185' height='278')
+    include includes/footer.pug

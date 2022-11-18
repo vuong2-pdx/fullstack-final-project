@@ -9,6 +9,19 @@ app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
 
+//Midlleware function to serve static files such as images or css
+app.use(express.static(__dirname + "/../" + "/public"));
+
+//Connect to DB
+//If you want to save the URI into .env file uncomment the following:
+// const dotenv = require("dotenv").config();
+
+const connectDB = require("./db");
+connectDB();
+
+//Route variables
+const watchList = require("./routes/watchList");
+
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Main',
@@ -37,14 +50,9 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get('/contact', (req, res) => {
-  res.render('page', {
-    title: 'Contact',
-    heading: 'Contact Page',
-    subheading: 'Sub-Heading #2',
-  });
-});
+app.use("/WatchList", watchList);
 
 app.listen(port, () => {
+  console.log(`${__dirname}`);
   console.log(`listening on port http://localhost:${port}`);
 });
