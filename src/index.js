@@ -84,8 +84,8 @@ app.post("/submit", async (req, res) => {
     title: "Search Results",
     heading: "Search results",
     subheading: `Found the following for ${title}`,
-    results: sampleResults
-    // results: await search.renderResults(title)
+    // results: sampleResults
+    results: await search.renderResults(title)
   });
 });
 
