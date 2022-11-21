@@ -12,12 +12,16 @@ html
       h2 #{subheading}      
       section.text Search Results
       ol#results
-        each item in results
-          li
-            | Title: #{item.name}
-            ul
-              li Id: #{item.id}
-              li Type: #{item.type}
-                  each source in item.sources
-                    li=source
+        if results.length != 0
+          each item in results
+            li
+              | Title: #{item.name}
+              ul
+                li Id: #{item.id}
+                li Type: #{item.type}
+                    each source in item.sources
+                      li Name: #{source.sourceName}, URL: #{source.sourceUrl}
+        else
+          div.alert.alert-warning
+            | No movie or TV show found from your search query
     include includes/footer.pug

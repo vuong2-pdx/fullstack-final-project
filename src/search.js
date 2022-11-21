@@ -31,24 +31,37 @@ const formatTitles = (searchResult) => {
   };
 };
 
-const formatSources = (source) => {
-  return `Watch on ${source.name} at ${source.web_url}`;
+const createSourceObject = (source) => {
+  let sourceObject = {
+    sourceName: source.name,
+    sourceUrl: source.web_url
+  }
+  return sourceObject
 };
 
 const getSources = async (title) => {
   let sources = [];
+  let sourceObjects = [];
   const response = await axios
     .get(
       `${WATCHMODE_SOURCE_SEARCH_START}${title.id}${WATCHMODE_SOURCE_SEARCH_END}`
     )
     .then((response) => response.data)
-    .then((response) => response.map((source) => formatSources(source)))
+    .then((response) => response.map((source) => {
+
+      // check if the sources already has the current source's name since ethe response has duplicates
+      // if the source's name already exists, we should not add it to the sourceObjects array
+      const hasSourceAlready = sourceObjects.some((item) => item.sourceName === source.name)
+      if (!hasSourceAlready) {
+        sourceObjects.push(createSourceObject(source))
+      }
+    }))
     .catch((e) => {
       console.log(`Error while getting sources: ${e}`);
     });
 
   // copy response array to sources array so we can return it
-  sources = response.map((x) => x);
+  sources = sourceObjects.map((x) => x);
   return sources;
 };
 
@@ -71,7 +84,11 @@ const renderResults = async () => {
     let sourcesResults = [];
     const sourcesResponse = await getSources(results[i]);
     sourcesResults = sourcesResponse.map((x) => x);
-    sourcesResults.forEach((source) => results[i].sources.push(source));
+
+    sourcesResults.forEach((source) => results[i].sources.push({
+      sourceName: source.sourceName,
+      sourceUrl: source.sourceUrl
+    }));
   }
   return results;
 };

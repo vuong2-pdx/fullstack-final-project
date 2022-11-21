@@ -50,12 +50,49 @@ app.get('/about', (req, res) => {
   });
 });
 
+/*
+[
+  {
+    name: 'Abbott Elementary',
+    id: 3179719,
+    type: 'TV series',
+    sources: [
+              {
+                sourceName: 'ABC',
+                sourceUrl: 'https://abc.com/shows/abbott-elementary/episode-guide/season-02/04-the-principals-office'
+              },
+              {
+                sourceName: 'VUDU',
+                sourceUrl: 'https://www.vudu.com/content/movies/details/Abbott-Elementary-Pilot/1967332'
+              },
+              {
+                sourceName: 'VUDU',
+                sourceUrl: 'https://www.vudu.com/content/movies/details/Abbott-Elementary-Pilot/1967332'
+              },
+              {
+                sourceName: 'Amazon',
+                sourceUrl: 'https://watch.amazon.com/detail?gti=amzn1.dv.gti.7b2c410f-aace-4e7d-af1d-86d3adb05e57'
+              },
+              {
+                sourceName: 'Amazon',
+                sourceUrl: 'https://watch.amazon.com/detail?gti=amzn1.dv.gti.7b2c410f-aace-4e7d-af1d-86d3adb05e57'
+              },
+              {
+                sourceName: 'iTunes',
+                sourceUrl: 'https://tv.apple.com/us/episode/pilot/umc.cmc.4le8nn3f9u8gfdanaeluf74ui?playableId=tvs.sbd.9001%3A1599127206&showId=umc.cmc.4yajt40knug1iwx1l9hrjxkxy'
+              }
+    ]
+  }
+]
+*/
+
 app.get("/search", async (req, res) => {
   res.render("search", {
     title: "Search",
     heading: "Search for a movie or TV show",
     subheading: "Enter in your search query",
-    results: await search.renderResults(),
+    // results: []
+    results: await search.renderResults()
   });
 });
 
