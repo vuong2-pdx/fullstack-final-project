@@ -7,10 +7,10 @@ const { randomize } = require('./randomize');
 
 app.set("views", __dirname + "/../" + "views");
 app.set("view engine", "pug");
-app.use(express.static(__dirname + "/public"));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + "/../" + "/public"));
+app.use(express.urlencoded( { extended : false }))
 
 //Connect to DB
 //If you want to save the URI into .env file uncomment the following:
@@ -50,49 +50,42 @@ app.get('/about', (req, res) => {
   });
 });
 
-/*
-[
-  {
-    name: 'Abbott Elementary',
-    id: 3179719,
-    type: 'TV series',
-    sources: [
-              {
-                sourceName: 'ABC',
-                sourceUrl: 'https://abc.com/shows/abbott-elementary/episode-guide/season-02/04-the-principals-office'
-              },
-              {
-                sourceName: 'VUDU',
-                sourceUrl: 'https://www.vudu.com/content/movies/details/Abbott-Elementary-Pilot/1967332'
-              },
-              {
-                sourceName: 'VUDU',
-                sourceUrl: 'https://www.vudu.com/content/movies/details/Abbott-Elementary-Pilot/1967332'
-              },
-              {
-                sourceName: 'Amazon',
-                sourceUrl: 'https://watch.amazon.com/detail?gti=amzn1.dv.gti.7b2c410f-aace-4e7d-af1d-86d3adb05e57'
-              },
-              {
-                sourceName: 'Amazon',
-                sourceUrl: 'https://watch.amazon.com/detail?gti=amzn1.dv.gti.7b2c410f-aace-4e7d-af1d-86d3adb05e57'
-              },
-              {
-                sourceName: 'iTunes',
-                sourceUrl: 'https://tv.apple.com/us/episode/pilot/umc.cmc.4le8nn3f9u8gfdanaeluf74ui?playableId=tvs.sbd.9001%3A1599127206&showId=umc.cmc.4yajt40knug1iwx1l9hrjxkxy'
-              }
-    ]
-  }
-]
-*/
-
 app.get("/search", async (req, res) => {
   res.render("search", {
     title: "Search",
     heading: "Search for a movie or TV show",
     subheading: "Enter in your search query",
-    // results: []
-    results: await search.renderResults()
+  });
+});
+
+const sampleResults = [
+  {
+    name: 'Stranger Things',
+    id: 3112487,
+    type: 'TV series',
+    sources: [
+        {
+          sourceName: 'Netflix Free',
+          sourceUrl: 'http://www.netflix.com/title/80057281'
+        },
+        {
+          sourceName: 'Netflix',
+          sourceUrl: 'https://www.netflix.com/watch/80077368'
+        }
+    ]
+  },
+  { name: 'Stranger Things', id: 1523556, type: 'Movie', sources: [] }
+]
+
+app.post("/submit", async (req, res) => {
+  const title = req.body.title
+  
+  res.render("searchResults", {
+    title: "Search Results",
+    heading: "Search results",
+    subheading: `Found the following for ${title}`,
+    results: sampleResults
+    // results: await search.renderResults(title)
   });
 });
 
