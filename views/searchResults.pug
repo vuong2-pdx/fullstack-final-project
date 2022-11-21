@@ -14,13 +14,17 @@ html
         if results.length != 0
           section.text #{subheading}
             each item in results
+              p
+              img(src=item.poster)
               li
                 | Title: #{item.name}
                 ul
                   li Id: #{item.id}
                   li Type: #{item.type}
-                      each source in item.sources
-                        li Name: #{source.sourceName}, URL: #{source.sourceUrl}
+                  li Year: #{item.year}
+                  li Plot: #{item.plot}
+                    each source in item.sources
+                      li Name: #{source.sourceName}, URL: #{source.sourceUrl}
         else
           div.alert.alert-warning
             | No movie or TV show found from your search query

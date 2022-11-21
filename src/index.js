@@ -63,6 +63,10 @@ const sampleResults = [
     name: 'Stranger Things',
     id: 3112487,
     type: 'TV series',
+    year: 2021,
+    imdbId: 'tt14218830',
+    plot: 'Follows a group of teachers brought together in one of the worst public schools in the country, simply because they love teaching.',
+    poster: 'https://m.media-amazon.com/images/M/MV5BMTY1MWUwYjItY2JmYi00ZDgyLTgzMjUtNzNkMzg0NjNjYTdkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_SX300.jpg',
     sources: [
         {
           sourceName: 'Netflix Free',
@@ -84,8 +88,8 @@ app.post("/submit", async (req, res) => {
     title: "Search Results",
     heading: "Search results",
     subheading: `Found the following for ${title}`,
-    // results: sampleResults
-    results: await search.renderResults(title)
+    results: sampleResults
+    // results: await search.renderResults(title)
   });
 });
 
