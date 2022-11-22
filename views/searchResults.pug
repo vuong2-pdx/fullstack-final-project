@@ -9,23 +9,47 @@ html
       include includes/navbar.pug
     main.container
       h2 #{heading}
-
       ol#results
         if results.length != 0
           section.text #{subheading}
             each item in results
               p
-              img(src=item.poster)
-              li
-                | Title: #{item.name}
-                ul
-                  li Id: #{item.id}
-                  li Type: #{item.type}
-                  li Year: #{item.year}
-                  li Plot: #{item.plot}
-                    each source in item.sources
-                      li Name: #{source.sourceName}, URL: #{source.sourceUrl}
+              .container-md
+                .card.mx-auto.h-100
+                  .row.g-0
+                    .col-md-3
+                      img.img-fluid(src=item.poster)
+                    .col-md-9
+                      .card-body
+                        //- Display the type of the title on the top right corner
+                        if item.type === 'Movie'
+                          .type-bar
+                            | Movie
+                            i.bi-film 
+                        else if item.type === 'TV series'
+                          .type-bar
+                            | TV show
+                            i.bi-tv
+                        else
+                          .type-bar
+                            i.bi-patch-question No type information
+                        h3.card-title #{item.name}
+                          //- Display year if present
+                          if item.year
+                            |  (#{item.year})
+                        //- Display short plot
+                        .card-wrapper
+                          .card-text
+                            | #{item.plot}
+                          //- Display sources
+                          .sources-bar
+                            if item.sources.length !== 0
+                              each source in item.sources
+                                a.btn.btn-secondary(href=source.sourceUrl role='button' aria-pressed='true') #{source.sourceName}
+                            else
+                              .alert.alert-warning
+                                | This title is unavailable on streaming platforms
         else
-          div.alert.alert-warning
+          .alert.alert-warning
             | No movie or TV show found from your search query
     include includes/footer.pug

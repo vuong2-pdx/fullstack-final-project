@@ -69,7 +69,7 @@ const getSources = async (title) => {
       console.log(`Error while getting sources: ${e}`);
     });
 
-  // copy response array to sources array so we can return it
+    // copy response array to sources array so we can return it
   sources = sourceObjects.map((x) => x);
   return sources;
 };
