@@ -1,9 +1,6 @@
 //- Viktoriya Petrova @ViktoriyaPetrova
 //- Display a single movie pug page
 
-
-//- Rough Draft of all page elements
-
 doctype html
 html
   include includes/head.pug
@@ -11,41 +8,41 @@ html
   body
     header
       include includes/navbar.pug
-    main.container.bg-light.border.rounded.w-50.mx-auto
-        h1.text-center #{title}
-        img.mx-auto.d-block(src=poster alt='movie poster' width='185' height='278')
-        div#rating-container.rating-container
-          if rating == 5
-            input#star5.input( type='radio' name='rating' value='star5' checked )
-          else 
-            input#star5.input(type='radio' name='rating' value='star5' )
-          label.icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5')
-          if rating == 4
-            input#star4.input(type='radio' name='rating' value='star4' checked )
-          else
-            input#star4.input(type='radio' name='rating' value='star4' )
-          label.icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5')
-          if rating == 3
-            input#star3.input(type='radio' name='rating' value='star3' checked )
-          else
-            input#star3.input(type='radio' name='rating' value='star3' )
-          label.icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5')
-          if rating == 2
-            input#star2.input(type='radio' name='rating' value='star2' checked )
-          else
-            input#star2.input(type='radio' name='rating' value='star2' )
-          label.icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5')
-          if rating == 1
-            input#star1.input(type='radio' name='rating' value='star1', )
-          else
-            input#star1.input(type='radio' name='rating' value='star1')
-          label.icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
-        div.d-flex
-          //- p.w-50.text-center #{rating}
-          if watched
-            p.w-50.text-center="Watched"
-          else
-            p.w-50.text-center="Not watched"
+    main.container.bg-light.border.rounded.w-75.mx-auto
+        h1.text-center.mt-3 #{title}
+        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='185' height='278')
+        div.d-flex.justify-content-between.mt-4
+          div#rating-container.rating-container.mt-3
+            if rating == 5
+              input#star5.input( type='radio' name='rating' value='star5' checked )
+            else 
+              input#star5.input(type='radio' name='rating' value='star5' )
+            label.icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5')
+            if rating == 4
+              input#star4.input(type='radio' name='rating' value='star4' checked )
+            else
+              input#star4.input(type='radio' name='rating' value='star4' )
+            label.icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5')
+            if rating == 3
+              input#star3.input(type='radio' name='rating' value='star3' checked )
+            else
+              input#star3.input(type='radio' name='rating' value='star3' )
+            label.icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5')
+            if rating == 2
+              input#star2.input(type='radio' name='rating' value='star2' checked )
+            else
+              input#star2.input(type='radio' name='rating' value='star2' )
+            label.icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5')
+            if rating == 1
+              input#star1.input(type='radio' name='rating' value='star1', )
+            else
+              input#star1.input(type='radio' name='rating' value='star1')
+            label.icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
+          div#watched-container
+            if watched
+              button#wtch.btn.btn-success.p-3(type='button' value="watched") Watched
+            else
+              button#wtch.btn.btn-warning.p-3(type='button' value="not-watched") Not watched
         p.text-center #{review}
         //- Add buttons to take the user to the streaming service 
     include includes/footer.pug
