@@ -42,9 +42,9 @@ $(document).ready(function () {
     let url = window.location.href + "/watched";
     let data;
     if ($(this).val() === "watched") {
-      data = { watched: "watched" };
+      data = { watched: false };
     } else if ($(this).val() === "not-watched") {
-      data = { watched: "not watched" };
+      data = { watched: true };
     }
 
     $.ajax({
@@ -63,6 +63,46 @@ $(document).ready(function () {
       error: (error) => {
         console.log(error);
       },
+    });
+  });
+});
+
+//Handle review edit click event
+$(document).ready(function () {
+  $("#edit-container input:radio").click(function () {
+    const oldReview = $("#review-text").text();
+
+    $("#review-container").replaceWith(
+      $(`<form id="review-form">
+          <div>
+            <label for="review-text"> Edit Your Review </label>
+            <textarea class="form-control" id="review-text"> ${oldReview}</textarea>
+          </div>
+          <button class="btn btn-primary mt-3" type="submit id="submit"> Submit</button>
+         </form>`)
+    );
+
+    $("form").submit(function (event) {
+      let url = window.location.href + "/review";
+      const textval = $("textarea").val();
+      let data = { review: textval };
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        dataType: "json",
+        success: (data) => {
+          console.log("POST success");
+          location.reload();
+        },
+        error: (error) => {
+          console.log("POST ERROR");
+          console.log(error);
+        },
+      });
+
+      event.preventDefault();
     });
   });
 });

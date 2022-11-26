@@ -59,12 +59,15 @@ router.post("/:id/rating", (req, res) => {
 
 //Update watched preference
 router.post("/:id/watched", (req, res) => {
-  let watched = true;
   const parsedId = parseInt(req.params.id, 10);
-  if (req.body.watched === "watched") {
-    watched = false;
-  }
-  movieController.updateWatched(parsedId, watched);
+  movieController.updateWatched(parsedId, req.body.watched);
+  res.end();
+});
+
+//Update user review
+router.post("/:id/review", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  movieController.updateReview(parsedId, req.body.review);
   res.end();
 });
 

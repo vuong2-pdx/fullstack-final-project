@@ -93,6 +93,19 @@ async function updateWatched(id, newStatus) {
   console.log("Watched status updated");
 }
 
+//Update the user review
+async function updateReview(id, newReview) {
+  if (!id || !newReview) {
+    throw new Error("One or more of the required fields was empty");
+  }
+
+  const success = await Movie.updateOne({ movieID: id }, { review: newReview });
+  if (!success.acknowledged) {
+    throw new Error("Movie could not be updated");
+  }
+  console.log("Watched status updated");
+}
+
 module.exports = {
   addMovie,
   removeMovie,
@@ -100,4 +113,5 @@ module.exports = {
   retrieveAllMovies,
   updateRating,
   updateWatched,
+  updateReview,
 };

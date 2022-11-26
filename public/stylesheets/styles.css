@@ -57,13 +57,23 @@ h2 {
   display: inline-block;
   font-size: 20px;
 }
-.icon {
+.star-icon {
   float: right;
   cursor: pointer;
   color: #f9b008;
 }
-.icon:hover:before,
-.icon:hover ~ .icon:before,
-.input:checked ~ .icon:before {
+.star-icon:hover:before,
+.star-icon:hover ~ .star-icon:before,
+.input:checked ~ .star-icon:before {
   content: "\f005";
+}
+
+/*Edit button*/
+.edit-container {
+  display: inline-block;
+  font-size: 20px;
+}
+.pencil-icon {
+  float: right;
+  cursor: pointer;
 }
