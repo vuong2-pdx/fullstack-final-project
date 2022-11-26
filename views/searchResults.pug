@@ -4,6 +4,7 @@
 doctype html
 html
   include includes/head.pug
+  script(defer='' src= "js/addToWatchList.js")
   body
     header
       include includes/navbar.pug
@@ -12,7 +13,7 @@ html
       ol#results
         if results.length != 0
           section.text #{subheading}
-            each item in results
+            each item, index in results
               p
               .container-md
                 .card.mx-auto.h-100
@@ -41,6 +42,10 @@ html
                         .card-wrapper
                           .card-text
                             | #{item.plot}
+                            p(id='testText') change me to blue
+                              //- button#changeColor Add to Favorites
+                              //- button(type='button', onclick='display("'+ item +'","'+ index +'")') Add to Favorites
+                              button(type='button', onclick='display(' + JSON.stringify(item) + ')') Add to Favorites
                           //- Display sources
                           .sources-bar
                             if item.sources.length !== 0
