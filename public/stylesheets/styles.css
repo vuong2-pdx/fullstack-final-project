@@ -18,6 +18,7 @@ h2 {
 
 .container {
   margin-top: 4rem;
+  min-width: 450px;
 }
 
 .text {
