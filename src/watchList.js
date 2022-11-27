@@ -109,7 +109,6 @@ router.post("/addToDb", (req, res) => {
   }
 
   movieController.addMovie(titleSchemaObj)
-  // movieController.removeMovie(titleSchemaObj.movieID)
   .then((data) => {
     res.status(200).send(data)
     res.end()

@@ -15,8 +15,7 @@ const movieSchema = mongoose.Schema({
   review: String,
   watched: Boolean,
   sources: {
-    type: [ {sourceName: String, sourceUrl: String} ],
-    default: undefined
+    type: [ {sourceName: String, sourceUrl: String} ]
   }
 });
 

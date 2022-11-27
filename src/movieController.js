@@ -24,13 +24,6 @@ async function addMovie(movie) {
     throw new Error("Movie could not be added to the database");
   }
   console.log("Movie added.");
-
-  findMovie(movie.movieID)
-  .then((data) => {
-    console.log(data)
-  })
-
-  removeMovie(movie.movieID)
 }
 
 //Remove a movie from the DB, is is a number
