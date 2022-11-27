@@ -71,4 +71,13 @@ router.post("/:id/review", (req, res) => {
   res.end();
 });
 
+router.post("/addToDb", (req, res) => {
+  movieController.addMovie(req.body)
+  .then(
+    res.end())
+  .catch((error) => {
+    console.error(error)
+  })
+});
+
 module.exports = router;

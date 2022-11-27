@@ -4,7 +4,8 @@
 doctype html
 html
   include includes/head.pug
-  script(defer='' src= "js/addToWatchList.js")
+  script(src="https://unpkg.com/axios/dist/axios.min.js")
+  script(src= "js/addToWatchList.js")
   body
     header
       include includes/navbar.pug
@@ -42,10 +43,9 @@ html
                         .card-wrapper
                           .card-text
                             | #{item.plot}
-                            p(id='testText') change me to blue
-                              //- button#changeColor Add to Favorites
-                              //- button(type='button', onclick='display("'+ item +'","'+ index +'")') Add to Favorites
-                              button(type='button', onclick='display(' + JSON.stringify(item) + ')') Add to Favorites
+                            //- todo: add an alert here instead of paragraph
+                            p(id='resultText')
+                            button(type='button', onclick='addToWatchList(' + JSON.stringify(item) + ')') Add to Watch List
                           //- Display sources
                           .sources-bar
                             if item.sources.length !== 0
