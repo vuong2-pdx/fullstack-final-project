@@ -1,0 +1,14 @@
+//- Viktoriya Petrova @ViktoriyaPetrova
+//- Error page
+
+doctype html
+html
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+        h1.text-center Oops!
+        img.mx-auto.d-block(src="/images/TV-rainbow-screen.png" alt="TV rainbow screen img" width='136' height='200')
+        h2.mt-3.text-center #{err}
+    include includes/footer.pug
