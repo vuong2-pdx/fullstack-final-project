@@ -11,7 +11,7 @@ const {
 } = require('./loadList.js');
 
 // api key for watchmode
-const API_KEY = 'XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt';
+const API_KEY = '3CP5alQhhvxxhqKJXMqCa0kFf9RagfOFz3S7ZdKe';
 // api key for ombd
 const OMDB_API_KEY = 'd4eeaaba';
 
@@ -36,28 +36,34 @@ const getRandomID = (list, totalItem) => {
 // is the watch list)
 const randomize = (type) => {
   // randomly pick one from the list
+  let id;
   if (type === undefined) {
-    return getData(WATCHMODE_BASE_URL, getRandomID(list, listTotal));
+    id = getRandomID(list, listTotal);
+  }
+  if (type === 'either') {
+    id = getRandomID(list, listTotal);
   }
   // movies only
   if (type === 'movie') {
-    return getData(WATCHMODE_BASE_URL, getRandomID(movieList, movieTotal));
+    id = getRandomID(movieList, movieTotal);
   }
   // tv shows only
   if (type === 'tv') {
-    return getData(WATCHMODE_BASE_URL, getRandomID(tvList, tvTotal));
+    id = getRandomID(tvList, tvTotal);
   }
   // for now assume the saved watch list is passed in
   if (Array.isArray(type) === true) {
-    return getData(WATCHMODE_BASE_URL, getRandomID(type, type.length));
+    id = getRandomID(type, type.length);
   }
+  // getStreamingSouces(id);
+  return getData(WATCHMODE_BASE_URL, id);
 };
 
 const getData = async (baseUrl, id) => {
   const url = new URL(`title/${id}/details/`, baseUrl);
   url.searchParams.set('apiKey', API_KEY);
 
-  console.log(url);
+  // console.log(url);
 
   let data = {};
 
@@ -70,5 +76,21 @@ const getData = async (baseUrl, id) => {
 
   return data;
 };
+
+// const getStreamingSouces = async (id) => {
+//   const url = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${API_KEY}`;
+//   console.log(url);
+
+//   let data = {};
+//   await axios
+//     .get(url)
+//     .then((response) => {
+//       data = response.data;
+//       console.log(data);
+//     })
+//     .catch((err) => console.log(err.message));
+
+//   return data;
+// };
 
 module.exports = { randomize };
