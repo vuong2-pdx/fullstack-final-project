@@ -24,6 +24,13 @@ async function addMovie(movie) {
     throw new Error("Movie could not be added to the database");
   }
   console.log("Movie added.");
+
+  findMovie(movie.movieID)
+  .then((data) => {
+    console.log(data)
+  })
+
+  removeMovie(movie.movieID)
 }
 
 //Remove a movie from the DB, is is a number
@@ -58,6 +65,9 @@ async function findMovie(id) {
 //Retrieve all movies saved in the DB, returns a promise
 async function retrieveAllMovies() {
   const result = await Movie.find({});
+
+  console.log(result)
+
   if (!result) {
     throw new Error("There are no saved movies");
   }

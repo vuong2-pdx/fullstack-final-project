@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const movieSchema = mongoose.Schema({
   movieID: { type: Number, required: [true, "Please add a movie ID"] },
-  imbdID: Number,
+  imbdID: String,
   title: String,
   type: String,
   year: Number,
@@ -14,7 +14,10 @@ const movieSchema = mongoose.Schema({
   plot: String,
   review: String,
   watched: Boolean,
-  sources: Array,
+  sources: {
+    type: [ {sourceName: String, sourceUrl: String} ],
+    default: undefined
+  }
 });
 
 module.exports = mongoose.model("Movie", movieSchema);

@@ -35,17 +35,19 @@ html
                         else
                           .type-bar
                             i.bi-patch-question No type information
-                        h3.card-title #{item.name}
+                        h3.card-title #{item.name} 
                           //- Display year if present
                           if item.year
                             |  (#{item.year})
                         //- Display short plot
                         .card-wrapper
+                          div(onclick='addToWatchList(' + JSON.stringify(item) + ', ' + index + ')')
+                            i(id='heart-' + index, class='bi-heart')
+                            |  Add to Watch List  
+                            span(id='add-result-' + index)
                           .card-text
                             | #{item.plot}
-                            //- todo: add an alert here instead of paragraph
-                            p(id='resultText')
-                            button(type='button', onclick='addToWatchList(' + JSON.stringify(item) + ')') Add to Watch List
+                            br
                           //- Display sources
                           .sources-bar
                             if item.sources.length !== 0

@@ -71,12 +71,52 @@ router.post("/:id/review", (req, res) => {
   res.end();
 });
 
+// Add title to the watch list
 router.post("/addToDb", (req, res) => {
-  movieController.addMovie(req.body)
-  .then(
-    res.end())
+  let title = req.body
+
+  let tempSources = []
+
+  let tempSourceName = []
+  let tempSourceUrl = []
+
+  for (const [key, value] of Object.entries(title)) {
+    if (key.includes('sourceName')) {
+      tempSourceName.push(value)
+    }
+    if (key.includes('sourceUrl')) {
+      tempSourceUrl.push(value)
+    }
+  }
+
+  tempSourceName.map((currSourceName, index) => tempSources.push({
+    sourceName: currSourceName,
+    sourceUrl: tempSourceUrl[index]
+  }))
+
+  let titleSchemaObj = {
+    movieID: parseInt(req.body.id),
+    imdbID: req.body.imdbId,
+    title: req.body.name,
+    type: req.body.type,
+    year: parseInt(req.body.year),
+    poster: req.body.poster,
+    rating: 0,
+    plot: req.body.plot,
+    review: '',
+    watched: false,
+    sources: tempSources.map(x => x)
+  }
+
+  movieController.addMovie(titleSchemaObj)
+  // movieController.removeMovie(titleSchemaObj.movieID)
+  .then((data) => {
+    res.status(200).send(data)
+    res.end()
+  })
   .catch((error) => {
-    console.error(error)
+    console.log(error)
+    res.status(error.status || 500).send({error: error.message})
   })
 });
 

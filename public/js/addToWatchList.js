@@ -1,35 +1,19 @@
-const result = document.querySelector("#resultText");
+const addToWatchList = (title, index) => {
+  const result = document.querySelector(`#add-result-${index}`);
 
-const addToWatchList = (title) => {
-  console.log("i'm in the event listener")
-
-  let titleSchemaObj = {
-    movieID: title.id,
-    imdbID: title.imdbId,
-    title: title.name,
-    type: title.type,
-    year: title.year,
-    poster: title.poster,
-    rating: 0,
-    plot: title.plot,
-    review: '',
-    watched: false,
-    sources: []
-  }
-
-  title.sources.forEach((source) => titleSchemaObj.sources.push({
-    sourceName: source.sourceName,
-    sourceUrl: source.sourceUrl
-  }))
-
-  axios.post('/WatchList/addToDb', titleSchemaObj, {
+  // hit the WatchList endpoint to add to the database
+  axios.post('/WatchList/addToDb', title, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
-    }})
-  .then(() => {
-    result.style.color = "green";
-    result.textContent = "Added."
+    }
   })
-  .catch(error => console.log(error)
-  );
+  .then(() => {
+    result.style.color = 'green'
+    result.textContent = 'Added to watch list'
+  })
+  .catch(error => {
+    result.style.color = 'red'
+    result.textContent = 'Try again'
+    console.log(`Error while adding title ${title.name} to watch list: ${error}`)
+  });
 }
