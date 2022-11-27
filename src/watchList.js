@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
-const movieController = require("../movieController");
+const movieController = require("./movieController");
 
 router.get("/", (req, res) => {
   const promise = movieController.retrieveAllMovies();
@@ -25,8 +25,8 @@ router.get("/", (req, res) => {
 //Dynamic routing
 router.get("/:id", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
-  console.log(req.params.id);
-  console.log(parsedId);
+  // console.log(req.params.id);
+  // console.log(parsedId);
 
   if (!isNaN(parsedId)) {
     const promise = movieController.findMovie(parsedId);
@@ -48,6 +48,27 @@ router.get("/:id", (req, res) => {
     console.log("NAN");
     res.end();
   }
+});
+
+//Update star rating for each movie
+router.post("/:id/rating", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  movieController.updateRating(parsedId, req.body.star);
+  res.end();
+});
+
+//Update watched preference
+router.post("/:id/watched", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  movieController.updateWatched(parsedId, req.body.watched);
+  res.end();
+});
+
+//Update user review
+router.post("/:id/review", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  movieController.updateReview(parsedId, req.body.review);
+  res.end();
 });
 
 module.exports = router;
