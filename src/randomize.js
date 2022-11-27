@@ -26,7 +26,7 @@ const getRandomIndex = (totalItem) => Math.floor(Math.random() * totalItem);
 // return a IMDb ID randomly pick from the list
 const getRandomID = (list, totalItem) => {
   const randNumber = getRandomIndex(totalItem);
-  return list[randNumber].imdbID;
+  return list[randNumber].id;
 };
 
 // default is return from the whole list so it could be a moive or a show
@@ -37,25 +37,27 @@ const getRandomID = (list, totalItem) => {
 const randomize = (type) => {
   // randomly pick one from the list
   if (type === undefined) {
-    return getData(OMDB_BASE_URL, getRandomID(list, listTotal));
+    return getData(WATCHMODE_BASE_URL, getRandomID(list, listTotal));
   }
   // movies only
   if (type === 'movie') {
-    return getData(OMDB_BASE_URL, getRandomID(movieList, movieTotal));
+    return getData(WATCHMODE_BASE_URL, getRandomID(movieList, movieTotal));
   }
   // tv shows only
   if (type === 'tv') {
-    return getData(OMDB_BASE_URL, getRandomID(tvList, tvTotal));
+    return getData(WATCHMODE_BASE_URL, getRandomID(tvList, tvTotal));
   }
   // for now assume the saved watch list is passed in
   if (Array.isArray(type) === true) {
-    return getData(OMDB_BASE_URL, getRandomID(type, type.length));
+    return getData(WATCHMODE_BASE_URL, getRandomID(type, type.length));
   }
 };
 
 const getData = async (baseUrl, id) => {
-  const url = new URL(baseUrl);
-  url.searchParams.set('i', id);
+  const url = new URL(`title/${id}/details/`, baseUrl);
+  url.searchParams.set('apiKey', API_KEY);
+
+  console.log(url);
 
   let data = {};
 

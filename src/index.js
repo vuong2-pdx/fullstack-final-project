@@ -1,26 +1,26 @@
 // import {searchTest} from './search.js'
-const express = require("express");
-const search = require("./search");
+const express = require('express');
+const search = require('./search');
 const app = express();
 const port = process.env.PORT || 5001;
 const { randomize } = require('./randomize');
 
-app.set("views", __dirname + "/../" + "views");
-app.set("view engine", "pug");
-app.use(express.static(__dirname + "/public"));
+app.set('views', __dirname + '/../' + 'views');
+app.set('view engine', 'pug');
+app.use(express.static(__dirname + '/public'));
 
 //Midlleware function to serve static files such as images or css
-app.use(express.static(__dirname + "/../" + "/public"));
+app.use(express.static(__dirname + '/../' + '/public'));
 
 //Connect to DB
 //If you want to save the URI into .env file uncomment the following:
 // const dotenv = require("dotenv").config();
 
-const connectDB = require("./db");
+const connectDB = require('./db');
 connectDB();
 
 //Route variables
-const watchList = require("./routes/watchList");
+const watchList = require('./routes/watchList');
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -35,10 +35,10 @@ app.get('/random', async (req, res) => {
   res.render('random', {
     title: 'Randomize',
     heading: 'Randomize page',
-    subheading: data.Title,
-    poster: data.Poster,
-    year: data.Year,
-    plot: data.Plot,
+    subheading: data.title,
+    poster: data.poster,
+    year: data.year,
+    plot: data.plot_overview,
   });
 });
 
@@ -50,16 +50,16 @@ app.get('/about', (req, res) => {
   });
 });
 
-app.get("/search", async (req, res) => {
-  res.render("search", {
-    title: "Search",
-    heading: "Search for a movie or TV show",
-    subheading: "Enter in your search query",
+app.get('/search', async (req, res) => {
+  res.render('search', {
+    title: 'Search',
+    heading: 'Search for a movie or TV show',
+    subheading: 'Enter in your search query',
     results: await search.renderResults(),
   });
 });
 
-app.use("/WatchList", watchList);
+app.use('/WatchList', watchList);
 
 app.listen(port, () => {
   console.log(`${__dirname}`);
