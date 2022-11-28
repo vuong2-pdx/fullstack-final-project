@@ -85,8 +85,8 @@ span .visually-hidden {
 }
 
 .documentary-button{
-  background-image: linear-gradient(to right, #b55177 0%, rgb(139, 26, 96) 51%, #b55177 100%);
-  color: #fdf9f9;
+  background-image: linear-gradient(to right, #f299bb 0%, #e69459 51%, #f299bb 100%);
+  color: #222020;
 }
 
 /* highlightted text courtesy of : https://medium.com/@mattlistor/highlight-effect-using-css-204ab4590480 */
