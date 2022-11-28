@@ -21,7 +21,7 @@ h4 {
 
 .container {
   margin-top: 2em;
-  min-width: 450px;
+  min-width: 490px;
 }
 
 .text {
@@ -113,7 +113,7 @@ h4 {
   float: right;
 }
 
-i::before{
+i::before {
   font-size: 1em;
   padding-left: 7px;
 }

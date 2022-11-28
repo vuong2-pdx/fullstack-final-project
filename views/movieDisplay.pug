@@ -11,7 +11,7 @@ html
     main
       div.container.bg-light.border.rounded.w-50.mx-auto
         h1.text-center.mt-3 #{title}
-        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='185' height='278')
+        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='278' height='417')
         
         //-Star Rating
         div.d-flex.justify-content-between.mt-4
@@ -42,10 +42,11 @@ html
               input#star1.input(type='radio' name='rating' value='star1')
             label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
           
-          //-TYPE TESTING!!!!!!
+          //-Title Type 
           p.text-secondary.mt-3 Type: #{type}
-          p.text-secondary.mt-3 Year: #{year}
 
+          //- Year
+          p.text-secondary.mt-3 Year: #{year}
 
           //- Watched button
           div#watched-container
@@ -57,7 +58,10 @@ html
         //- User review 
         h4.text-center.mt-3 My review
         div#review-container.d-flex.justify-content-center
-          p#review-text.m-2 #{review}
+          if review === ""
+            p#review-text.m-2 Add a review for this title...
+          else
+            p#review-text.m-2 #{review}
           div#edit-container.m-2
             input#edit.input(type='radio' name='edit')
             label.pencil-icon.fa.fa-pencil(for='edit' title='Edit your review')
@@ -70,7 +74,7 @@ html
         //- Sources buttons
         div.d-block.text-center.mb-4.mt-3
           each item in sources
-            a.btn.btn-secondary.m-1(href=item.sourceUrl) #{item.sourceName}
+            a.btn.btn-secondary.m-1(href=item.sourceUrl, target="_blank", rel="noopener noreferrer") #{item.sourceName}
         
         //- Delete the movie from the Watch List
     div#delete-container.d-block.text-center.mt-2
