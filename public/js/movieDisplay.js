@@ -109,7 +109,7 @@ $(document).ready(function () {
 
 //Handle Delete Event
 $(document).ready(function () {
-  $("#delete-container button").click(function () {
+  $("#delete").click(function () {
     let url = window.location.href + "/delete";
     $.ajax({
       type: "POST",
