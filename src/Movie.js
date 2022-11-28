@@ -15,8 +15,8 @@ const movieSchema = mongoose.Schema({
   review: String,
   watched: Boolean,
   sources: {
-    type: [{ sourceName: String, sourceUrl: String }],
-  },
+    type: [ {sourceName: String, sourceUrl: String} ]
+  }
 });
 
 module.exports = mongoose.model("Movie", movieSchema);

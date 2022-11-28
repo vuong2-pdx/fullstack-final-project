@@ -73,28 +73,26 @@ router.post("/:id/review", (req, res) => {
 
 // Add title to the watch list
 router.post("/addToDb", (req, res) => {
-  let title = req.body;
+  let title = req.body
 
-  let tempSources = [];
+  let tempSources = []
 
-  let tempSourceName = [];
-  let tempSourceUrl = [];
+  let tempSourceName = []
+  let tempSourceUrl = []
 
   for (const [key, value] of Object.entries(title)) {
-    if (key.includes("sourceName")) {
-      tempSourceName.push(value);
+    if (key.includes('sourceName')) {
+      tempSourceName.push(value)
     }
-    if (key.includes("sourceUrl")) {
-      tempSourceUrl.push(value);
+    if (key.includes('sourceUrl')) {
+      tempSourceUrl.push(value)
     }
   }
 
-  tempSourceName.map((currSourceName, index) =>
-    tempSources.push({
-      sourceName: currSourceName,
-      sourceUrl: tempSourceUrl[index],
-    })
-  );
+  tempSourceName.map((currSourceName, index) => tempSources.push({
+    sourceName: currSourceName,
+    sourceUrl: tempSourceUrl[index]
+  }))
 
   let titleSchemaObj = {
     movieID: parseInt(req.body.id),
@@ -105,21 +103,20 @@ router.post("/addToDb", (req, res) => {
     poster: req.body.poster,
     rating: 0,
     plot: req.body.plot,
-    review: "",
+    review: '',
     watched: false,
-    sources: tempSources.map((x) => x),
-  };
+    sources: tempSources.map(x => x)
+  }
 
-  movieController
-    .addMovie(titleSchemaObj)
-    .then((data) => {
-      res.status(200).send(data);
-      res.end();
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(error.status || 500).send({ error: error.message });
-    });
+  movieController.addMovie(titleSchemaObj)
+  .then((data) => {
+    res.status(200).send(data)
+    res.end()
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(error.status || 500).send({error: error.message})
+  })
 });
 
 module.exports = router;
