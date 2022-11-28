@@ -12,7 +12,9 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   color: var(--green);
 }
 
@@ -28,7 +30,7 @@ h2 {
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
 }
