@@ -1,6 +1,8 @@
 :root {
   --green: #008000;
   --grey: #333333;
+  --dark-green: #0a6c0a;
+  --dark-blue: #0b47c7;
 }
 
 * {
@@ -8,15 +10,12 @@
 }
 
 body {
-  padding: 0 0.5em;
   margin-bottom: 5em;
 }
 
 h1,
-h2,
-h3,
-h4 {
-  color: var(--green);
+h2 {
+  color: var(--dark-green);
 }
 
 .container {
@@ -31,13 +30,77 @@ h4 {
 }
 
 .footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 999;
 }
 
 .footer > .copyright {
   margin: 1em;
+}
+
+.btn-primary {
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+/* index.pug styles */
+.carousel, .carousel-container {
+  width: 85%;
+  padding-top: 1em;
+  margin: auto;
+}
+
+.carousel-item img{
+  width: 100%;
+  margin: auto;
+  vertical-align: middle;
+}
+
+.carousel-item h1, h2 {
+  color: #222020;
+}
+
+.carousel-item .btn {
+  box-shadow: 0 0 5px #fdf9f9;
+  border-radius: 5px;
+}
+
+span .visually-hidden {
+  color: #ffffff;
+}
+
+.tv-show-button{
+  background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
+  color: #222020
+}
+
+.movie-button{
+  background-image: linear-gradient(to right, #34559e 0%, #042e8b 51%, #34559e 100%);
+  color: #fdf9f9;
+}
+
+.documentary-button{
+  background-image: linear-gradient(to right, #f299bb 0%, #e69459 51%, #f299bb 100%);
+  color: #222020;
+}
+
+/* highlightted text courtesy of : https://medium.com/@mattlistor/highlight-effect-using-css-204ab4590480 */
+.highlighted-text {
+  position: relative;
+}
+
+.highlighted-text:after {
+  background-color: #ffe359;
+  content: " ";
+  height: 50%;
+  position: absolute;
+  left: 8px;
+  margin-left: -1rem;
+  top: 45%;
+  width: calc(100% + 0.55rem);
+  z-index: -1;
 }
 
 /* watchList.pug styles*/
@@ -136,6 +199,10 @@ h4 {
 
 .card-wrapper {
   height: 85%;
+}
+
+.card-wrapper span{
+  padding-left: 7px;
 }
 
 .card-text {

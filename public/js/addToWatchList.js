@@ -8,11 +8,11 @@ const addToWatchList = (title, index) => {
     }
   })
   .then(() => {
-    result.style.color = 'green'
+    result.style.color = '#0a6c0a'
     result.textContent = 'Added to watch list'
   })
   .catch(error => {
-    result.style.color = 'red'
+    result.style.color = '#981b1e'
     result.textContent = 'Try again'
     console.log(`Error while adding title ${title.name} to watch list: ${error}`)
   });
