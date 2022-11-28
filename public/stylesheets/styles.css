@@ -91,6 +91,10 @@ h2 {
 >>>>>>> adf1d25 (update homepage and overall style)
 =======
 /* index.pug styles */
+.carousel {
+  z-index: -1;
+}
+
 .carousel-item h1, h2 {
 >>>>>>> 1c61fca (accessibility fixes)
   color: #222020;
