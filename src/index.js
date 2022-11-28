@@ -50,13 +50,10 @@ app.get('/random', async (req, res) => {
 app.post('/random/:type', async (req, res) => {
   const type = req.body.type;
   data.type = type;
-  let list = [];
   if (data.type === 'watchList') {
     console.log('entered watche list');
-    list = await movieController.retrieveAllMovies();
+    let list = await movieController.retrieveAllMovies();
     data.item = await randomize(list);
-    console.log(list);
-    console.log(data.item);
   } else {
     data.item = await randomize(type);
   }

@@ -21,7 +21,8 @@ const getRandomIndex = (totalItem) => Math.floor(Math.random() * totalItem);
 // return a IMDb ID randomly pick from the list
 const getRandomID = (list, totalItem) => {
   const randNumber = getRandomIndex(totalItem);
-  return list[randNumber].id;
+  const id = list[randNumber].movieID || list[randNumber].id;
+  return id;
 };
 
 // default is return from the whole list so it could be a moive or a show
@@ -46,7 +47,7 @@ const randomize = (type) => {
     id = getRandomID(tvList, tvList.length);
   }
   // for now assume the saved watch list is passed in
-  if (Array.isArray(type) === true) {
+  if (typeof type === 'object') {
     id = getRandomID(type, type.length);
   }
   // getStreamingSouces(id);

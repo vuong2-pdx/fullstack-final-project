@@ -9,11 +9,7 @@
 
 body {
   padding: 0 0.5em;
-<<<<<<< HEAD
-  padding-bottom: 50px;
-=======
   margin-bottom: 5em;
->>>>>>> main
 }
 
 h1,
@@ -35,7 +31,7 @@ h4 {
 }
 
 .footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
 }
@@ -70,7 +66,6 @@ h4 {
   cursor: pointer;
   color: #f9b008;
 }
-<<<<<<< HEAD
 .icon:hover:before,
 .icon:hover ~ .icon:before,
 .input:checked ~ .icon:before {
@@ -101,12 +96,12 @@ h4 {
   justify-content: center;
   width: 50px;
   height: 60px;
-=======
+}
+
 .star-icon:hover:before,
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
-  content: "\f005";
->>>>>>> main
+  content: '\f005';
 }
 
 /* searchResults.pug styles */
