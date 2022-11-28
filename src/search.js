@@ -7,7 +7,7 @@ const encodedNameSearchQuery = encodeURIComponent(nameSearchQuery);
 
 const OMDB_API_KEY = "bf001c";
 
-const WATCHMODE_API_KEY = "Q1rDP0sNPTHwHcnxZVhTyMRuDO7tSw7rRgnMUqC3";
+const WATCHMODE_API_KEY = "hsf4Ve5UGj32ofw8uwFgpme7mqfTGz23sROAUqOg";
 
 const WATCHMODE_BASE_URL = "https://api.watchmode.com/v1";
 
