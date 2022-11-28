@@ -7,13 +7,13 @@ const { randomize } = require("./randomize");
 
 app.set("views", __dirname + "/../" + "views");
 app.set("view engine", "pug");
-app.use(express.static(__dirname + "/public"));
 
 // Use middleware urlencoded() to parse an incoming request with a urlencoded payload and return an object
 app.use(express.urlencoded({ extended: false }));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + "/../" + "/public"));
+app.use(express.urlencoded({ extended: false }));
 
 //Connect to DB
 //If you want to save the URI into .env file uncomment the following:
@@ -58,7 +58,17 @@ app.get("/search", async (req, res) => {
     title: "Search",
     heading: "Search for a movie or TV show",
     subheading: "Enter in your search query",
-    results: await search.renderResults(),
+  });
+});
+
+app.post("/submit", async (req, res) => {
+  const title = req.body.title;
+
+  res.render("searchResults", {
+    title: "Search Results",
+    heading: "Search results",
+    subheading: `Found the following for '${title}'`,
+    results: await search.renderResults(title),
   });
 });
 

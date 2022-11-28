@@ -9,6 +9,7 @@
 
 body {
   padding: 0 0.5em;
+  margin-bottom: 5em;
 }
 
 h1,
@@ -19,7 +20,7 @@ h4 {
 }
 
 .container {
-  margin-top: 4rem;
+  margin-top: 2em;
   min-width: 450px;
 }
 
@@ -69,6 +70,61 @@ h4 {
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
   content: "\f005";
+}
+
+/* searchResults.pug styles */
+.card {
+  max-width: 90%;
+  border-width: 0.1em;
+  margin: 0px 0px 0px 0px;
+  color: #404040;
+  background-color: #eef4f7;
+  box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.card img {
+  border-radius: rounded;
+  max-width: 100%;
+}
+
+.card-title {
+  font-family: Georgia, Helvetica, sans-serif;
+}
+
+.card-body {
+  font-size: 0.8em;
+  padding: 20px 20px 5px 5px;
+  height: 100%;
+}
+
+.card-wrapper {
+  height: 85%;
+}
+
+.card-text {
+  margin-bottom: 2em;
+}
+
+.type-bar {
+  top: 0px;
+  right: 0px;
+  position: relative;
+  float: right;
+}
+
+i::before{
+  font-size: 1em;
+  padding-left: 7px;
+}
+
+.card-wrapper .sources-bar {
+  /* top: 2em; */
+  position: relative;
+}
+
+.sources-bar .btn {
+  margin: 2px 2px 2px 2px;
 }
 
 /*Edit button*/
