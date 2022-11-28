@@ -137,21 +137,15 @@ span .visually-hidden {
 =======
 .tv-show-button{
   background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
-  /* background-color: #f5b624; */
-  /* border-color: #f5b624; */
   color: #222020
 }
 
 .movie-button{
   background-image: linear-gradient(to right, #34559e 0%, #042e8b 51%, #34559e 100%);
-  /* background-color: #042e8b;
-  border-color: #042e8b; */
   color: #fdf9f9;
 }
 
 .documentary-button{
-  /* background-color: #7d3160;
-  border-color: #7d3160; */
   background-image: linear-gradient(to right, #b55177 0%, rgb(139, 26, 96) 51%, #b55177 100%);
   color: #fdf9f9;
 >>>>>>> adf1d25 (update homepage and overall style)
