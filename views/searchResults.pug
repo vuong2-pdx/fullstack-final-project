@@ -10,17 +10,18 @@ html(lang='en')
     header
       include includes/navbar.pug
     main.container
-      h2 #{heading}
+      h1 #{heading}
       ol#results
         if results.length != 0
-          section.text #{subheading}
+          section.text
+            h2 #{subheading}
             each item, index in results
               p
               .container-md
                 .card.mx-auto.h-100
                   .row.g-0
-                    .col-md-3
-                      img.img-fluid(src=item.poster)
+                    .col.col-md-3.text-center
+                      img.img-fluid(src=item.poster alt='Poster for ' + item.name)
                     .col-md-9
                       .card-body
                         //- Display the type of the title on the top right corner
@@ -41,10 +42,10 @@ html(lang='en')
                             |  (#{item.year})
                         //- Display short plot
                         .card-wrapper
-                          div(onclick='addToWatchList(' + JSON.stringify(item) + ', ' + index + ')')
+                          button.btn.btn-outline-dark(onclick='addToWatchList(' + JSON.stringify(item) + ', ' + index + ')' role='button')
                             i(id='heart-' + index, class='bi-heart')
                             |  Add to Watch List  
-                            span(id='add-result-' + index)
+                          span(id='add-result-' + index)
                           .card-text
                             | #{item.plot}
                             br
@@ -52,7 +53,7 @@ html(lang='en')
                           .sources-bar
                             if item.sources.length !== 0
                               each source in item.sources
-                                a.btn.btn-secondary(href=source.sourceUrl role='button' aria-pressed='true') #{source.sourceName}
+                                a.btn.btn-secondary(href=source.sourceUrl role='button') #{source.sourceName}
                             else
                               .alert.alert-warning
                                 | This title is unavailable on streaming platforms
