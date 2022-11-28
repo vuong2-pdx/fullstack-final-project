@@ -4,10 +4,12 @@ html
   header 
     include includes/navbar.pug
   body 
-    maim.container 
-      h1.text-center #{heading}
-      div.text-center.mt-5
+    maim.container
+      div.text-center.mt-4
         div.btn-group.btn-group-toggle
+          label.btn.btn-secondary.watchList
+            input(type='radio' name='options' value='watchList')
+            |  My Saved List
           if type === "movie"
             label.btn.btn-secondary.movie.active
               input(type='radio' name='options' value="movie" checked)
@@ -33,11 +35,27 @@ html
               input(type='radio' name='options' value="either")
               |  Either
       if subheading
-        div.text-center(id="result")
-        h3.text-center.mt-5 #{subheading}
-        img.mx-auto.d-block(src=poster, alt='poster' height='400' width='300')
-        p.text-center #{year}
-        p.w-75.mx-auto.text-center #{plot}
+        div.bg-light.border.rounded.w-50.mx-auto.mt-5.card
+          h3.text-center.mt-3 #{subheading}
+          div
+            img.mx-auto.d-block(src=poster, alt='poster' height='278' width='185')
+            div.d-flex.justify-content-center.mt-3
+                if rating >= 7.5
+                  p.mx-2.rating.bg-success.text-white #{rating}
+                else if rating <= 4
+                  p.mx-2.rating.bg-danger.text-white #{rating}
+                else if rating === null
+                  p.mx-2 No data
+                else
+                  p.mx-2.rating.bg-warning.text-dark #{rating}
+                p.mx-2 Type: #{tmdbType}
+                p.mx-2 Year: #{year}
+            p.w-75.mx-auto.text-center #{plot}
+            div.btn-group.btn-group-toggle.d-flex.mt-3.w-50.h-50.mx-auto.justify-content-center
+              label.btn.btn-danger.mx-1.rounded.ynbutton
+                input(type="radio" name="yesNo", value=tmdbType)
+                |  👎
+              a(class="btn btn-success mx-1 rounded ynbutton" href="random/randd", role="button") 👍
     script(src="/randDisplay.js")
-    include includes/footer.pug
+  include includes/footer.pug
 

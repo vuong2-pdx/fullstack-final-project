@@ -3,11 +3,6 @@
 const axios = require('axios');
 const {
   list, // the whole list of movies and tv shows available in US
-  movieList, // only movies in the US
-  tvList, // only tv shows in the US
-  listTotal, // number of items in the list
-  movieTotal, // number of items in the movieList
-  tvTotal, // number of items in the tvList
 } = require('./loadList.js');
 
 // api key for watchmode
@@ -37,19 +32,18 @@ const getRandomID = (list, totalItem) => {
 const randomize = (type) => {
   // randomly pick one from the list
   let id;
-  if (type === undefined) {
-    id = getRandomID(list, listTotal);
-  }
   if (type === 'either') {
-    id = getRandomID(list, listTotal);
+    id = getRandomID(list, list.length);
   }
   // movies only
   if (type === 'movie') {
-    id = getRandomID(movieList, movieTotal);
+    const movieList = list.filter((element) => element.tmdb_type === 'movie');
+    id = getRandomID(movieList, movieList.length);
   }
   // tv shows only
   if (type === 'tv') {
-    id = getRandomID(tvList, tvTotal);
+    const tvList = list.filter((element) => element.tmdb_type === 'movie');
+    id = getRandomID(tvList, tvList.length);
   }
   // for now assume the saved watch list is passed in
   if (Array.isArray(type) === true) {

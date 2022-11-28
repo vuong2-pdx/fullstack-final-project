@@ -18,18 +18,7 @@ const readList = (path) => {
 
 // // turn the csv id mapping data to array
 const list = readList(filePath);
-const movieList = list.filter((element) => element.tmdb_type === 'movie');
-const tvList = list.filter((element) => element.tmdb_type === 'tv');
-// get the max index of the data array
-const listTotal = list.length;
-const movieTotal = movieList.length;
-const tvTotal = tvList.length;
 
 module.exports = {
   list,
-  movieList,
-  tvList,
-  listTotal,
-  movieTotal,
-  tvTotal,
 };
