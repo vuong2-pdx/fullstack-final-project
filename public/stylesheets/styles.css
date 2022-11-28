@@ -45,6 +45,10 @@ h2 {
 }
 
 /* index.pug styles */
+.carousel {
+  z-index: -1;
+}
+
 .carousel-item h1, h2 {
   color: #222020;
 }
