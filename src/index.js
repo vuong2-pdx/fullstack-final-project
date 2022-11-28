@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + "/../" + "/public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded( { extended : false }))
 
 //Connect to DB
 
@@ -60,13 +60,13 @@ app.get("/search", async (req, res) => {
 });
 
 app.post("/submit", async (req, res) => {
-  const title = req.body.title;
-
+  const title = req.body.title
+  
   res.render("searchResults", {
     title: "Search Results",
     heading: "Search results",
     subheading: `Found the following for '${title}'`,
-    results: await search.renderResults(title),
+    results: await search.renderResults(title)
   });
 });
 
