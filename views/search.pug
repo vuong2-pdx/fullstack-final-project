@@ -1,5 +1,5 @@
 // Tram Vuong
-// Display search form and search results
+// Display search form
 
 doctype html
 html
@@ -8,16 +8,18 @@ html
     header
       include includes/navbar.pug
     main.container
-      h1 #{heading}    
-      h2 #{subheading}      
-      section.text Search Results
-      ol#results
-        each item in results
-          li
-            | Title: #{item.name}
-            ul
-              li Id: #{item.id}
-              li Type: #{item.type}
-                  each source in item.sources
-                    li=source
+      form.bg-light.border.rounded.mx-auto.mt-5.p-3(action='/submit' method='post')
+        h2 #{heading}
+        p   
+          .form-row
+            .col-md-4.mb-1
+              label(for='title') #{subheading}
+          .form-row
+            .col-md-6.mb-1 
+              input#title.form-control(type='text' required='' name='title' placeholder='ex: The Martian')
+            .col-md-6.mb-1
+              .btn-group(role='group' aria-label='Submit button group')
+                input#submit.btn.btn-primary.mr-1(type='submit' value='Submit')
+              .btn-group(role='group' aria-label='Reset button group')
+                input#reset.btn.btn-secondary(type='reset' value='Reset')
     include includes/footer.pug

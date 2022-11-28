@@ -1,9 +1,6 @@
 //- Viktoriya Petrova @ViktoriyaPetrova
 //- Display a single movie pug page
 
-
-//- Rough Draft of all page elements
-
 doctype html
 html
   include includes/head.pug
@@ -11,41 +8,88 @@ html
   body
     header
       include includes/navbar.pug
-    main.container.bg-light.border.rounded.w-50.mx-auto
-        h1.text-center #{title}
-        img.mx-auto.d-block(src=poster alt='movie poster' width='185' height='278')
-        div#rating-container.rating-container
-          if rating == 5
-            input#star5.input( type='radio' name='rating' value='star5' checked )
-          else 
-            input#star5.input(type='radio' name='rating' value='star5' )
-          label.icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5')
-          if rating == 4
-            input#star4.input(type='radio' name='rating' value='star4' checked )
+    main
+      div.container.bg-light.border.rounded.w-50.mx-auto
+        h1.text-center.mt-3 #{title}
+        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='278' height='417')
+        
+        //-Star Rating
+        div.d-flex.justify-content-between.mt-4
+          div#rating-container.rating-container.mt-3
+            if rating == 5
+              input#star5.input( type='radio' name='rating' value='star5' checked )
+            else 
+              input#star5.input(type='radio' name='rating' value='star5' )
+            label.star-icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5')
+            if rating == 4
+              input#star4.input(type='radio' name='rating' value='star4' checked )
+            else
+              input#star4.input(type='radio' name='rating' value='star4' )
+            label.star-icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5')
+            if rating == 3
+              input#star3.input(type='radio' name='rating' value='star3' checked )
+            else
+              input#star3.input(type='radio' name='rating' value='star3' )
+            label.star-icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5')
+            if rating == 2
+              input#star2.input(type='radio' name='rating' value='star2' checked )
+            else
+              input#star2.input(type='radio' name='rating' value='star2' )
+            label.star-icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5')
+            if rating == 1
+              input#star1.input(type='radio' name='rating' value='star1', )
+            else
+              input#star1.input(type='radio' name='rating' value='star1')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
+          
+          //-Title Type 
+          p.text-secondary.mt-3 Type: #{type}
+
+          //- Year
+          p.text-secondary.mt-3 Year: #{year}
+
+          //- Watched button
+          div#watched-container
+            if watched
+              button#wtch.btn.btn-success.p-3(type='button' value="watched") Watched
+            else
+              button#wtch.btn.btn-warning.p-3(type='button' value="not-watched") Not watched
+        
+        //- User review 
+        h4.text-center.mt-3 My review
+        div#review-container.d-flex.justify-content-center
+          if review === ""
+            p#review-text.m-2 Add a review for this title...
           else
-            input#star4.input(type='radio' name='rating' value='star4' )
-          label.icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5')
-          if rating == 3
-            input#star3.input(type='radio' name='rating' value='star3' checked )
-          else
-            input#star3.input(type='radio' name='rating' value='star3' )
-          label.icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5')
-          if rating == 2
-            input#star2.input(type='radio' name='rating' value='star2' checked )
-          else
-            input#star2.input(type='radio' name='rating' value='star2' )
-          label.icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5')
-          if rating == 1
-            input#star1.input(type='radio' name='rating' value='star1', )
-          else
-            input#star1.input(type='radio' name='rating' value='star1')
-          label.icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
-        div.d-flex
-          //- p.w-50.text-center #{rating}
-          if watched
-            p.w-50.text-center="Watched"
-          else
-            p.w-50.text-center="Not watched"
-        p.text-center #{review}
-        //- Add buttons to take the user to the streaming service 
-    include includes/footer.pug
+            p#review-text.m-2 #{review}
+          div#edit-container.m-2
+            input#edit.input(type='radio' name='edit')
+            label.pencil-icon.fa.fa-pencil(for='edit' title='Edit your review')
+        
+        //-Movie Plot
+        h4.text-center.mt-3 Plot
+        div#review-container.d-flex.justify-content-center
+          p#review-text.m-2 #{plot}
+
+        //- Sources buttons
+        div.d-block.text-center.mb-4.mt-3
+          each item in sources
+            a.btn.btn-secondary.m-1(href=item.sourceUrl, target="_blank", rel="noopener noreferrer") #{item.sourceName}
+        
+    //- Delete the movie from the Watch List
+    div.d-block.text-center.mt-2
+      button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#delete-movie') Remove From Watch List
+    //- Modal
+    div#delete-movie.modal.fade(tabindex='-1' aria-labelledby='delete-movie' aria-hidden='true')
+      div.modal-dialog
+        div.modal-content
+          div.modal-header
+            h1#delete-movie.modal-title.fs-5.text-danger Warning
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          div.modal-body
+            p Are you sure you want to remove this title from your watch list?
+          div.modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            buttondiv#delete.d-block.text-center.mt-2.btn.btn-danger(type='button') Yes I'm sure
+    footer  
+      include includes/footer.pug

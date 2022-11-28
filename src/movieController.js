@@ -43,7 +43,6 @@ async function removeMovie(id) {
 
 //Retrieve the info of one movie, id is a number
 async function findMovie(id) {
-  console.log(`FROM CONTROLLER: ${id}`);
   if (!id) {
     throw new Error("MovieID field was empty");
   }
@@ -62,20 +61,49 @@ async function retrieveAllMovies() {
   if (!result) {
     throw new Error("There are no saved movies");
   }
-  console.log("Success.");
   return result;
 }
 
-//Update a movie, movie is a JS object
-async function updateMovie(movie) {
-  if (!movie.movieID) {
-    throw new Error("MovieID field was empty");
+//Update the rating of a movie
+async function updateRating(id, newRating) {
+  if (!id || !newRating) {
+    throw new Error("ID field was empty");
   }
-  const success = await Movie.replaceOne({ movieID: movie.movieID });
+
+  const success = await Movie.updateOne({ movieID: id }, { rating: newRating });
   if (!success.acknowledged) {
     throw new Error("Movie could not be updated");
   }
-  console.log("Movie updated");
+  console.log("Rating updated");
+}
+
+//Update the watched status of a movie
+async function updateWatched(id, newStatus) {
+  if (!id) {
+    throw new Error("ID field was empty");
+  }
+
+  const success = await Movie.updateOne(
+    { movieID: id },
+    { watched: newStatus }
+  );
+  if (!success.acknowledged) {
+    throw new Error("Movie could not be updated");
+  }
+  console.log("Watched status updated");
+}
+
+//Update the user review
+async function updateReview(id, newReview) {
+  if (!id || !newReview) {
+    throw new Error("One or more of the required fields was empty");
+  }
+
+  const success = await Movie.updateOne({ movieID: id }, { review: newReview });
+  if (!success.acknowledged) {
+    throw new Error("Movie could not be updated");
+  }
+  console.log("Watched status updated");
 }
 
 module.exports = {
@@ -83,5 +111,7 @@ module.exports = {
   removeMovie,
   findMovie,
   retrieveAllMovies,
-  updateMovie,
+  updateRating,
+  updateWatched,
+  updateReview,
 };

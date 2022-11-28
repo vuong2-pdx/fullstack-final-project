@@ -8,23 +8,20 @@ const movieController = require('./movieController');
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
-app.use(express.static(__dirname + '/public'));
-app.use(express.urlencoded({ extended: true }));
+
+// Use middleware urlencoded() to parse an incoming request with a urlencoded payload and return an object
+app.use(express.urlencoded({ extended: false }));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + '/../' + '/public'));
+app.use(express.urlencoded({ extended: false }));
 
 //Connect to DB
-//If you want to save the URI into .env file uncomment the following:
-// const dotenv = require("dotenv").config();
-
 const connectDB = require('./db');
 connectDB();
 
 //Route variables
-const watchList = require('./routes/watchList');
-const { format } = require('path');
-const { URLSearchParams } = require('url');
+const watchList = require('./watchList');
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -85,13 +82,29 @@ app.get('/search', async (req, res) => {
     title: 'Search',
     heading: 'Search for a movie or TV show',
     subheading: 'Enter in your search query',
-    results: await search.renderResults(),
+  });
+});
+
+app.post('/submit', async (req, res) => {
+  const title = req.body.title;
+
+  res.render('searchResults', {
+    title: 'Search Results',
+    heading: 'Search results',
+    subheading: `Found the following for '${title}'`,
+    results: await search.renderResults(title),
   });
 });
 
 app.use('/WatchList', watchList);
 
+//Error page
+app.get('/error', (req, res) => {
+  res.render('error', {
+    err: 'Something went wrong',
+  });
+});
+
 app.listen(port, () => {
-  console.log(`${__dirname}`);
   console.log(`listening on port http://localhost:${port}`);
 });
