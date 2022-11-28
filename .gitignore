@@ -5,3 +5,4 @@ src/.DS_Store
 .env
 */*/.DS_Store
 */.DS_Store
+public/img/.DS_Store
