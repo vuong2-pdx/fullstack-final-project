@@ -41,6 +41,21 @@ router.get("/:id", (req, res) => {
           rating: response.rating,
           review: response.review,
           watched: response.watched,
+
+          //TEST
+          plot: "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+          type: "TV show",
+          year: 1993,
+          sources: [
+            { sourceName: "Netflix", sourceUrl: "https://www.netflix.com/" },
+            { sourceName: "Hulu", sourceUrl: "https://www.hulu.com/" },
+            {
+              sourceName: "Amazon Prime",
+              sourceUrl: "https://www.amazon.com/Prime-Video/b?node=2676882011",
+            },
+            { sourceName: "Peacock", sourceUrl: "https://www.peacocktv.com/" },
+            { sourceName: "Disney+", sourceUrl: "https://www.disneyplus.com" },
+          ],
         });
       },
       (error) => {
@@ -88,6 +103,21 @@ router.post("/:id/review", (req, res) => {
     res.render("error", { err: error });
   }
   res.end();
+});
+
+router.post("/:id/delete", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  try {
+    // movieController.removeMovie(parsedId);
+    console.log("BACKEND POST");
+  } catch (error) {
+    res.render("error", { err: error });
+  }
+  res.end();
+});
+
+router.get("/:id/delete", (req, res) => {
+  res.render("deleteMovie");
 });
 
 module.exports = router;

@@ -8,9 +8,12 @@ html
   body
     header
       include includes/navbar.pug
-    main.container.bg-light.border.rounded.w-50.mx-auto
+    main
+      div.container.bg-light.border.rounded.w-50.mx-auto
         h1.text-center.mt-3 #{title}
         img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='185' height='278')
+        
+        //-Star Rating
         div.d-flex.justify-content-between.mt-4
           div#rating-container.rating-container.mt-3
             if rating == 5
@@ -38,15 +41,39 @@ html
             else
               input#star1.input(type='radio' name='rating' value='star1')
             label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
+          
+          //-TYPE TESTING!!!!!!
+          p.text-secondary.mt-3 Type: #{type}
+          p.text-secondary.mt-3 Year: #{year}
+
+
+          //- Watched button
           div#watched-container
             if watched
               button#wtch.btn.btn-success.p-3(type='button' value="watched") Watched
             else
               button#wtch.btn.btn-warning.p-3(type='button' value="not-watched") Not watched
-        div#review-container.d-flex.justify-content-center.mt-4
+        
+        //- User review 
+        h4.text-center.mt-3 My review
+        div#review-container.d-flex.justify-content-center
           p#review-text.m-2 #{review}
           div#edit-container.m-2
             input#edit.input(type='radio' name='edit')
             label.pencil-icon.fa.fa-pencil(for='edit' title='Edit your review')
-        //- Add buttons to take the user to the streaming service 
-    include includes/footer.pug
+        
+        //-Movie Plot
+        h4.text-center.mt-3 Plot
+        div#review-container.d-flex.justify-content-center
+          p#review-text.m-2 #{plot}
+
+        //- Sources buttons
+        div.d-block.text-center.mb-4.mt-3
+          each item in sources
+            a.btn.btn-secondary.m-1(href=item.sourceUrl) #{item.sourceName}
+        
+        //- Delete the movie from the Watch List
+    div#delete-container.d-block.text-center.mt-2
+      button.btn.btn-danger(type="button" value="Delete" ) Remove From Watch List
+    footer  
+      include includes/footer.pug
