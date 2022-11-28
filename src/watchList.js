@@ -97,7 +97,6 @@ router.post("/:id/delete", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
   try {
     movieController.removeMovie(parsedId);
-    console.log("BACKEND POST");
   } catch (error) {
     res.render("error", { err: error });
   }

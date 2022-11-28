@@ -13,10 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + "/../" + "/public"));
-app.use(express.urlencoded( { extended : false }))
+app.use(express.urlencoded({ extended: false }));
 
 //Connect to DB
-
 const connectDB = require("./db");
 connectDB();
 
@@ -60,53 +59,23 @@ app.get("/search", async (req, res) => {
 });
 
 app.post("/submit", async (req, res) => {
-  const title = req.body.title
-  
+  const title = req.body.title;
+
   res.render("searchResults", {
     title: "Search Results",
     heading: "Search results",
     subheading: `Found the following for '${title}'`,
-    results: await search.renderResults(title)
+    results: await search.renderResults(title),
   });
 });
 
 app.use("/WatchList", watchList);
 
-//SAMPLE ERROR PAGE. Delete?
+//Error page
 app.get("/error", (req, res) => {
   res.render("error", {
     err: "Something went wrong",
   });
-});
-
-//DELETE DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const movieController = require("./movieController");
-app.get("/temp", (req, res) => {
-  let dummyMovie = {
-    // movieID: 375254,
-    movieID: 375255,
-    imdbID: 111111,
-    title: "Manifest",
-    type: "TV Show",
-    year: 2019,
-    poster: "https:\\cdn.watchmode.composters\0375254_poster_w185.jpg",
-    rating: 0,
-    plot: "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
-    review: "",
-    watched: false,
-    sources: [
-      { sourceName: "Netflix", sourceUrl: "https://www.netflix.com/" },
-      { sourceName: "Hulu", sourceUrl: "https://www.hulu.com/" },
-      {
-        sourceName: "Amazon Prime",
-        sourceUrl: "https://www.amazon.com/Prime-Video/b?node=2676882011",
-      },
-      { sourceName: "Peacock", sourceUrl: "https://www.peacocktv.com/" },
-      { sourceName: "Disney+", sourceUrl: "https://www.disneyplus.com" },
-    ],
-  };
-  movieController.addMovie(dummyMovie);
-  res.end();
 });
 
 app.listen(port, () => {
