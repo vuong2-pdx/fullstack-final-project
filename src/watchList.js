@@ -8,27 +8,30 @@ const router = express.Router();
 const movieController = require("./movieController");
 
 router.get("/", (req, res) => {
-  const promise = movieController.retrieveAllMovies();
-  promise.then(
-    (response) => {
-      res.render("watchList", {
-        heading: "Watch List",
-        results: response,
-      });
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
+  try {
+    const promise = movieController.retrieveAllMovies();
+    promise.then(
+      (response) => {
+        res.render("watchList", {
+          heading: "Watch List",
+          results: response,
+        });
+      },
+      (error) => {
+        console.log(error);
+        res.render("error", { err: error });
+      }
+    );
+  } catch (error) {
+    res.render("error", { err: error });
+  }
 });
 
 //Dynamic routing
 router.get("/:id", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
-  // console.log(req.params.id);
-  // console.log(parsedId);
 
-  if (!isNaN(parsedId)) {
+  try {
     const promise = movieController.findMovie(parsedId);
     promise.then(
       (response) => {
@@ -38,37 +41,71 @@ router.get("/:id", (req, res) => {
           rating: response.rating,
           review: response.review,
           watched: response.watched,
+          plot: response.plot,
+          type: response.type,
+          year: response.year,
+          sources: response.sources,
         });
       },
       (error) => {
         console.log(error);
+        res.render("error", { err: error });
       }
     );
-  } else {
-    console.log("NAN");
-    res.end();
+  } catch (error) {
+    res.render("error", { err: error });
   }
 });
 
 //Update star rating for each movie
 router.post("/:id/rating", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
-  movieController.updateRating(parsedId, req.body.star);
+  try {
+    movieController.updateRating(parsedId, req.body.star);
+  } catch (error) {
+    res.render("error", { err: error });
+  }
   res.end();
 });
 
 //Update watched preference
 router.post("/:id/watched", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
-  movieController.updateWatched(parsedId, req.body.watched);
+
+  try {
+    movieController.updateWatched(parsedId, req.body.watched);
+  } catch (error) {
+    res.render("error", { err: error });
+  }
   res.end();
 });
 
 //Update user review
 router.post("/:id/review", (req, res) => {
   const parsedId = parseInt(req.params.id, 10);
-  movieController.updateReview(parsedId, req.body.review);
+
+  try {
+    movieController.updateReview(parsedId, req.body.review);
+  } catch (error) {
+    res.render("error", { err: error });
+  }
   res.end();
+});
+
+//Delete a movie from the watch list
+router.post("/:id/delete", (req, res) => {
+  const parsedId = parseInt(req.params.id, 10);
+  try {
+    movieController.removeMovie(parsedId);
+  } catch (error) {
+    res.render("error", { err: error });
+  }
+  res.end();
+});
+
+//Page displaying movie was successfully deleted
+router.get("/:id/delete", (req, res) => {
+  res.render("deleteMovie");
 });
 
 // Add title to the watch list

@@ -13,13 +13,15 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   color: var(--green);
 }
 
 .container {
   margin-top: 2em;
-  min-width: 450px;
+  min-width: 490px;
 }
 
 .text {
@@ -29,7 +31,7 @@ h2 {
 }
 
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
 }
@@ -111,7 +113,7 @@ h2 {
   float: right;
 }
 
-i::before{
+i::before {
   font-size: 1em;
   padding-left: 7px;
 }
