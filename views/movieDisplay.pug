@@ -8,9 +8,12 @@ html(lang='en')
   body
     header
       include includes/navbar.pug
-    main.container.bg-light.border.rounded.w-50.mx-auto
+    main
+      div.container.bg-light.border.rounded.w-50.mx-auto
         h1.text-center.mt-3 #{title}
-        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='185' height='278')
+        img.mx-auto.d-block.mt-3(src=poster alt='movie poster' width='278' height='417')
+        
+        //-Star Rating
         div.d-flex.justify-content-between.mt-4
           div#rating-container.rating-container.mt-3
             if rating == 5
@@ -38,15 +41,55 @@ html(lang='en')
             else
               input#star1.input(type='radio' name='rating' value='star1')
             label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
+          
+          //-Title Type 
+          p.text-secondary.mt-3 Type: #{type}
+
+          //- Year
+          p.text-secondary.mt-3 Year: #{year}
+
+          //- Watched button
           div#watched-container
             if watched
               button#wtch.btn.btn-success.p-3(type='button' value="watched") Watched
             else
               button#wtch.btn.btn-warning.p-3(type='button' value="not-watched") Not watched
-        div#review-container.d-flex.justify-content-center.mt-4
-          p#review-text.m-2 #{review}
+        
+        //- User review 
+        h4.text-center.mt-3 My review
+        div#review-container.d-flex.justify-content-center
+          if review === ""
+            p#review-text.m-2 Add a review for this title...
+          else
+            p#review-text.m-2 #{review}
           div#edit-container.m-2
             input#edit.input(type='radio' name='edit')
             label.pencil-icon.fa.fa-pencil(for='edit' title='Edit your review')
-        //- Add buttons to take the user to the streaming service 
-    include includes/footer.pug
+        
+        //-Movie Plot
+        h4.text-center.mt-3 Plot
+        div#review-container.d-flex.justify-content-center
+          p#review-text.m-2 #{plot}
+
+        //- Sources buttons
+        div.d-block.text-center.mb-4.mt-3
+          each item in sources
+            a.btn.btn-secondary.m-1(href=item.sourceUrl, target="_blank", rel="noopener noreferrer") #{item.sourceName}
+        
+    //- Delete the movie from the Watch List
+    div.d-block.text-center.mt-2
+      button.btn.btn-danger(type='button' data-bs-toggle='modal' data-bs-target='#delete-movie') Remove From Watch List
+    //- Modal
+    div#delete-movie.modal.fade(tabindex='-1' aria-labelledby='delete-movie' aria-hidden='true')
+      div.modal-dialog
+        div.modal-content
+          div.modal-header
+            h1#delete-movie.modal-title.fs-5.text-danger Warning
+            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+          div.modal-body
+            p Are you sure you want to remove this title from your watch list?
+          div.modal-footer
+            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+            buttondiv#delete.d-block.text-center.mt-2.btn.btn-danger(type='button') Yes I'm sure
+    footer  
+      include includes/footer.pug

@@ -20,7 +20,7 @@ h2 {
 
 .container {
   margin-top: 2em;
-  min-width: 450px;
+  min-width: 490px;
 }
 
 .text {
@@ -180,7 +180,7 @@ span .visually-hidden {
   float: right;
 }
 
-i::before{
+i::before {
   font-size: 1em;
   padding-left: 7px;
 }
