@@ -33,6 +33,7 @@ h2 {
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 999;
 }
 
 .footer > .copyright {
@@ -45,8 +46,16 @@ h2 {
 }
 
 /* index.pug styles */
-.carousel {
-  z-index: -1;
+.carousel, .carousel-container {
+  width: 85%;
+  padding-top: 1em;
+  margin: auto;
+}
+
+.carousel-item img{
+  width: 100%;
+  margin: auto;
+  vertical-align: middle;
 }
 
 .carousel-item h1, h2 {
@@ -56,6 +65,10 @@ h2 {
 .carousel-item .btn {
   box-shadow: 0 0 5px #fdf9f9;
   border-radius: 5px;
+}
+
+span .visually-hidden {
+  color: #ffffff;
 }
 
 .tv-show-button{
