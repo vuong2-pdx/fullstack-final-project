@@ -4,9 +4,44 @@ html
   body
     header
       include includes/navbar.pug
-    main.container
-      h1 #{heading}
-      section.text Welcome to the #{title} page!!!
-      img(src='https://placekitten.com/400/200' alt='image of a kitten' width='400' height='200')
-      section.text Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, iste a consectetur dolores dolore voluptates nam cum dignissimos unde accusantium sequi praesentium magnam, culpa earum error sunt ipsum, similique dolorum.Deleniti dolores inventore, nisi cumque omnis exercitationem expedita suscipit minus unde soluta quisquam earum iure. Enim sunt unde, excepturi iure culpa hic rem ipsa, non, quae nam fugiat ducimus voluptatum?Aliquid, quidem! Eaque amet tenetur facere aspernatur sunt dolor nostrum nulla eos commodi nam obcaecati enim voluptates eveniet sit tempora tempore illo error, dignissimos veniam. Est corrupti dolores dolore aperiam!Facilis possimus architecto magni quae nisi distinctio voluptates odit. Dolore voluptas, tempore blanditiis hic quo omnis culpa, ex corporis maxime perspiciatis quae eius sequi, accusamus laudantium provident amet est excepturi.Ut minima voluptatibus sunt numquam fugit. Iusto vel reprehenderit laborum asperiores eos, autem quis quibusdam quae sed, mollitia natus voluptatibus impedit, sequi ad voluptatum? Quos vero quod voluptate veniam nam.Corrupti autem magni delectus accusantium! Dolorum distinctio ratione at perferendis quas tempore, nam illo nobis a reprehenderit repudiandae. Omnis velit aperiam modi natus veritatis nulla vero aspernatur, vitae a aliquam?Repellat illo adipisci nemo omnis tempore aliquid quia numquam amet voluptates voluptas laboriosam, quisquam possimus impedit at aperiam similique tenetur quos ducimus dolores perspiciatis eius nobis quod et quae.
+      main.container
+        #recentTitlesCarousel.carousel.slide(data-ride='carousel')
+          ol.carousel-indicators
+            li.active(data-target='#recentTitlesCarousel' data-slide-to='0')
+            li(data-target='#recentTitlesCarousel' data-slide-to='1')
+            li(data-target='#recentTitlesCarousel' data-slide-to='2')
+          .carousel-inner
+            .carousel-item.active
+              .col.text-center
+                h2
+                  | Find your favorite 
+                  span.highlighted-text  TV shows 
+                  | here.
+              img.d-block.w-100(src='img/wednesday-tv-show.jpg' alt='Wednesday TV show')
+              .carousel-caption.d-none.d-md-block
+                a.btn.btn-lg.btn-secondary.tv-show-button(href='/search' role='button' aria-pressed='true') Watch Wednesday on streaming
+            .carousel-item
+              .col.text-center
+                h2
+                  | Find your favorite 
+                  span.highlighted-text  movies 
+                  | here.
+              img.d-block.w-100(src='img/nope-movie.jpg' alt='Nope Movie')
+              .carousel-caption.d-none.d-md-block
+                a.btn.btn-lg.btn-secondary.movie-button(href='/search' role='button' aria-pressed='true') Watch Nope on streaming
+            .carousel-item
+              .col.text-center
+                h2
+                  | Find your favorite 
+                  span.highlighted-text  documentaries 
+                  | here.
+              img.d-block.w-100(src='/img/good-night-oppy-documentary.jpg' alt='Good Night Oppy Documentary')
+              .carousel-caption.d-none.d-md-block
+                a.btn.btn-lg.btn-secondary.documentary-button(href='/search' role='button' aria-pressed='true') Watch Good Night Oppy on streaming
+          a.carousel-control-prev(href='#recentTitlesCarousel' role='button' data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+          a.carousel-control-next(href='#recentTitlesCarousel' role='button' data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
     include includes/footer.pug
