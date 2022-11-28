@@ -34,6 +34,7 @@ let data = { type: '', item: {} };
 app.get('/random', async (req, res) => {
   const tmdbType = data.item.tmdb_type === 'movie' ? 'Movie' : 'TV Show';
   res.render('random', {
+    init: 'CLICK ONE TO START',
     type: data.type,
     title: 'Randomize',
     subheading: data.item.title,
@@ -42,7 +43,7 @@ app.get('/random', async (req, res) => {
     tmdbType: tmdbType,
     year: data.item.year,
     plot: data.item.plot_overview,
-    imdbId: data.item.imdb_id,
+    id: data.item.id,
   });
   res.end();
 });
@@ -62,8 +63,16 @@ app.post('/random/:type', async (req, res) => {
   res.end();
 });
 
-app.get('/random/randd', (req, res) => {
-  res.render('randDisplay');
+app.get('/random/:id', (req, res) => {
+  const id = req.url.split('/').pop();
+  const param = data.item.trailer.toString().split('=').pop();
+  const trailer = new URL(param, 'https://www.youtube.com/embed/');
+  res.render('randDisplay', {
+    title: data.item.title,
+    year: data.item.year,
+    poster: data.item.poster,
+    trailer: trailer,
+  });
 });
 
 app.get('/about', (req, res) => {

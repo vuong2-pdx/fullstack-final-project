@@ -44,23 +44,26 @@ html
           h3.text-center.mt-3 #{subheading}
           div
             img.mx-auto.d-block(src=poster, alt='poster' height='417' width='278')
-            div.d-flex.justify-content-center.mt-3
+            div.d-flex.justify-content-center.mt-2
                 if rating >= 7.5
-                  p.mx-2.rating.bg-success.text-white #{rating}
+                  p.mx-4.rating.bg-success.text-white #{rating}
                 else if rating <= 4
-                  p.mx-2.rating.bg-danger.text-white #{rating}
-                else if (typeof(rating) === 'undifined')
-                  p.mx-2 No data
+                  p.mx-4.rating.bg-danger.text-white #{rating}
+                else if rating === null
+                  p.mx-4 No
                 else
-                  p.mx-2.rating.bg-warning.text-dark #{rating}
-                p.mx-2 Type: #{tmdbType}
-                p.mx-2 Year: #{year}
+                  p.mx-4.rating.bg-warning.text-dark #{rating}
+                p.mx-4.text-secondary #{tmdbType}
+                p.mx-4.text-secondary Year: #{year}
             p.w-75.mx-auto.text-center #{plot}
             div.btn-group.btn-group-toggle.d-flex.mt-3.w-50.h-50.mx-auto.justify-content-center
               label.btn.btn-danger.mx-1.rounded.ynbutton
                 input(type="radio" name="yesNo", value=tmdbType)
                 |  👎
-              a(class="btn btn-success mx-1 rounded ynbutton" href="random/randd", role="button") 👍
-    script(src="/randDisplay.js")
+              a(class="btn btn-success mx-1 rounded ynbutton" href="random/"+id, role="button") 👍
+      else
+        div.text-center
+          h1.init #{init}
+    script(src="/js/randDisplay.js")
   include includes/footer.pug
 

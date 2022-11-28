@@ -54,6 +54,8 @@ const randomize = (type) => {
   return getData(WATCHMODE_BASE_URL, id);
 };
 
+const getSource = (sourceList) => {};
+
 const getData = async (baseUrl, id) => {
   const url = new URL(`title/${id}/details/`, baseUrl);
   url.searchParams.set('apiKey', API_KEY);
