@@ -58,9 +58,6 @@ async function findMovie(id) {
 //Retrieve all movies saved in the DB, returns a promise
 async function retrieveAllMovies() {
   const result = await Movie.find({});
-
-  console.log(result)
-
   if (!result) {
     throw new Error("There are no saved movies");
   }
