@@ -188,6 +188,10 @@ span .visually-hidden {
   padding: 20px;
 }
 
+.nameCard div {
+  width: 215.1px;
+}
+
 .poweredBy a {
   text-align: center;
   text-decoration: none;
