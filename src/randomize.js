@@ -41,13 +41,13 @@ const randomize = (type) => {
     id = getRandomID(list, list.length);
   }
   // movies only
-  if (type === 'movie') {
+  if (type === 'Movie') {
     const movieList = list.filter((element) => element.tmdb_type === 'movie');
     id = getRandomID(movieList, movieList.length);
   }
   // tv shows only
-  if (type === 'tv') {
-    const tvList = list.filter((element) => element.tmdb_type === 'movie');
+  if (type === 'TV Show') {
+    const tvList = list.filter((element) => element.tmdb_type === 'tv');
     id = getRandomID(tvList, tvList.length);
   }
   // for now assume the saved watch list is passed in

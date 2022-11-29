@@ -9,11 +9,11 @@ const randomize = require('./randomize');
 
 let data = { type: '', item: {} };
 router.get('/', async (req, res) => {
-  const tmdbType = data.item.tmdb_type === 'movie' ? 'Movie' : 'TV Show';
+  const tmdbType = data.item.tmdb_type === 'Movie' ? 'Movie' : 'TV Show';
 
   res.render('random', {
     init: 'CLICK ONE TO START',
-    type: data.type,
+    Dtype: data.type,
     title: 'Choose for Me',
     subheading: data.item.title,
     poster: data.item.poster,
@@ -29,8 +29,7 @@ router.get('/', async (req, res) => {
 
 router.post('/:type', async (req, res) => {
   const type = req.body.type;
-  data.type = type;
-  if (data.type === 'watchList') {
+  if (type === 'watchList') {
     console.log('entered watche list');
     let list = await movieController.retrieveAllMovies();
     data.item = await randomize.randomize(list);
