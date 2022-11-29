@@ -5,7 +5,9 @@ html(lang='en')
     include includes/navbar.pug
   body 
     maim.container
-      h1.text-center Movie Roulette
+      div.d-flex
+        div.mx-auto
+          h1.text-center.text-body.highlighted-text.pe-2 Movie Roulette
       div.text-center.mt-4
         div.btn-group(role='group' arial-label='Basic radio toggle button')
           if type === 'watchList'
