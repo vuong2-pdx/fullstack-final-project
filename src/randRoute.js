@@ -1,3 +1,6 @@
+// Cheng Lin @cchlin
+// Router for /random endpoint
+
 const express = require('express');
 const router = express.Router();
 

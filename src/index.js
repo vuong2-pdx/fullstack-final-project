@@ -30,9 +30,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
-  res.render('page', {
+  res.render('about', {
     title: 'About',
-    heading: 'About Page',
+    heading: 'About',
     subheading: 'Sub-Heading #1',
   });
 });

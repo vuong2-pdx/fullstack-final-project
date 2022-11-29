@@ -1,5 +1,8 @@
 /** @format */
 
+// Cheng Lin @cchlin
+// functions for ranomize
+
 const axios = require('axios');
 const {
   list, // the whole list of movies and tv shows available in US

@@ -5,6 +5,7 @@ html(lang='en')
     include includes/navbar.pug
   body 
     maim.container
+      h1.text-center Movie Roulette
       div.text-center.mt-4
         div.btn-group(role='group' arial-label='Basic radio toggle button')
           if type === 'watchList'
@@ -63,7 +64,7 @@ html(lang='en')
               a(class="btn btn-success mx-1 rounded ynbutton" href="random/"+id role="button") 👍
       else
         div.text-center
-          h1.init #{init}
+          h3.init #{init}
     script(src="/js/randDisplay.js")
   include includes/footer.pug
 

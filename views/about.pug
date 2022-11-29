@@ -1,0 +1,62 @@
+doctype html
+html(lang='en')
+  include includes/head.pug
+  body
+    header
+      include includes/navbar.pug
+    main.container
+      div.d-flex.flex-column.justify-content-center
+        h1.mx-auto.pe-2.mb-5.text-body.highlighted-text #{heading}    
+        div.mx-auto.mt-1
+          h5.mx-auto.w-75.text-center.p-2.lh-base This is a application that you can obtain moive or tv show information. You can use this applilcation to find what and where to watch, and make a list of your own. This web application created by Cheng Lin, Tram Vuong, and Viktoriya Petrova for a full stack web development class to show our abilities to collaborate on a full stack project.
+        div.mx-auto
+          h1.highlighted-text.text-body.pe-2.my-5 Powered By
+        div.mx-auto.mt-1
+          div.d-flex.flex-column.poweredBy
+            div
+              a.link-secondary(href='https://expressjs.com/')
+                h4 Express
+            div
+              a.link-secondary(href='https://getbootstrap.com/')
+                h4 Boostrap
+            div
+              a.link-secondary(href='https://www.mongodb.com/')
+                h4 MongoDB
+            div
+              a.link-secondary(href='https://api.watchmode.com/')
+                h4 Watchmode
+            div
+              a.link-secondary(href='https://www.omdbapi.com/')
+                h4 OMDb
+        div.mx-auto
+          h1.highlighted-text.text-body.pe-2.my-5 The Team
+        div.mx-auto.mt-1
+          div.d-flex.flex-column.flex-lg-row
+            div.nameCard
+              div.d-flex.flex-column
+                h3.text-body.ps-1 Cheng Lin
+                a(class="githubLink text-decoration-none link-secondary" href='https://github.com/cchlin')
+                  i.bi.bi-github
+                    |  Github: cchlin
+                a(class="githubLink text-decoration-none link-secondary" href='mailto:chlin@pdx.edu')
+                  i.bi.bi-envelope-fill
+                    |  Email: chlin@pdx.edu
+            div.nameCard
+              div.d-flex.flex-column
+                h3.text-body.ps-1 Tram Vuong
+                a(class="githubLink text-decoration-none link-secondary" href='https://github.com/vuong2-pdx')
+                  i.bi.bi-github
+                    |  Github: vuong2-pdx
+                a(class="githubLink text-decoration-none link-secondary" href='mailto:vuong2@pdx.edu')
+                  i.bi.bi-envelope-fill
+                    |  Email: voung2@pdx.edu
+            div.nameCard
+              div.d-flex.flex-column
+                h3.text-body.ps1 Viktoriya Petrova
+                a(class="githubLink text-decoration-none link-secondary" href='https://github.com/ViktoriyaPetrova')
+                  i.bi.bi-github
+                    |  Github: ViktoriyaPetrova
+                a(class="githubLink text-decoration-none link-secondary" href='mailto:vpetrova@pdx.edu')
+                  i.bi.bi-envelope-fill
+                    |  Email: vpetrova@pdx.edu
+    include includes/footer.pug

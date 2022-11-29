@@ -1,5 +1,8 @@
 /** @format */
 
+// Cheng Lin @cchlin
+// load the list when initialize
+
 const fs = require('fs');
 
 // {id, title, year, imdb_id, tmdb_id, tmdb_type, type}
