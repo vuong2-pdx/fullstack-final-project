@@ -48,6 +48,39 @@ $('input[name=yesNo]').on('click', function () {
 });
 
 $('.back').on('click', function () {
-  console.log('button clicked');
   window.history.back();
 });
+
+function addToList(item, sources) {
+  let url = `${window.location.href}/add`;
+  console.log(url);
+
+  let data = {
+    movieID: item.id,
+    imdbID: item.imdb_id,
+    title: item.title,
+    type: item.type,
+    year: item.year,
+    poster: item.poster,
+    rating: item.user_rating,
+    plot: item.plot_overview,
+    review: '',
+    watched: false,
+    sources: sources,
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    success: function () {
+      console.log('POST success');
+      $('.addToList').prop('disabled', true);
+      $('.addToList').text('Added');
+    },
+    error: function (err) {
+      console.log('error');
+      console.log(eerr);
+    },
+  });
+}

@@ -4,9 +4,10 @@ const axios = require('axios');
 const {
   list, // the whole list of movies and tv shows available in US
 } = require('./loadList.js');
+const { base } = require('./Movie.js');
 
 // api key for watchmode
-const API_KEY = '3CP5alQhhvxxhqKJXMqCa0kFf9RagfOFz3S7ZdKe';
+const API_KEY = 'lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt';
 // api key for ombd
 const OMDB_API_KEY = 'd4eeaaba';
 
@@ -54,13 +55,9 @@ const randomize = (type) => {
   return getData(WATCHMODE_BASE_URL, id);
 };
 
-const getSource = (sourceList) => {};
-
 const getData = async (baseUrl, id) => {
   const url = new URL(`title/${id}/details/`, baseUrl);
   url.searchParams.set('apiKey', API_KEY);
-
-  // console.log(url);
 
   let data = {};
 
@@ -74,20 +71,27 @@ const getData = async (baseUrl, id) => {
   return data;
 };
 
-// const getStreamingSouces = async (id) => {
-//   const url = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${API_KEY}`;
-//   console.log(url);
+const getStreamingSources = async (id) => {
+  const url = new URL(`title/${id}/sources/`, WATCHMODE_BASE_URL);
+  url.searchParams.set('apiKey', API_KEY);
+  url.searchParams.set('regions', 'US');
 
-//   let data = {};
-//   await axios
-//     .get(url)
-//     .then((response) => {
-//       data = response.data;
-//       console.log(data);
-//     })
-//     .catch((err) => console.log(err.message));
+  let data = [];
+  await axios
+    .get(url)
+    .then((response) => {
+      let unique = [];
+      response.data.map((element) => {
+        if (!unique.includes(element.name)) {
+          data.push({ sourceName: element.name, sourceUrl: element.web_url });
+          unique.push(element.name);
+          return true;
+        }
+        return false;
+      });
+    })
+    .catch((err) => console.log(err.message));
+  return data;
+};
 
-//   return data;
-// };
-
-module.exports = { randomize };
+module.exports = { randomize, getStreamingSources };
