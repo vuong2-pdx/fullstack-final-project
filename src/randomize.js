@@ -26,7 +26,7 @@ const getRandomID = (list, totalItem) => {
   return id;
 };
 
-// default is return from the whole list so it could be a moive or a show
+// if either is passed in return 1 from the whole list
 // if movie type is passed in return only moive
 // if tv type is passed in return only tv show
 // if the list is passed in, return the selection from the list (assume
@@ -76,13 +76,15 @@ const getStreamingSources = async (id) => {
   url.searchParams.set('apiKey', API_KEY);
   url.searchParams.set('regions', 'US');
 
-  let data = [];
+  let data = []; // create a array to return
   await axios
     .get(url)
     .then((response) => {
-      let unique = [];
+      let unique = []; // temp array to check if the sources exist
       response.data.map((element) => {
+        // map through all the source
         if (!unique.includes(element.name)) {
+          // if the source name is not found, push it
           data.push({ sourceName: element.name, sourceUrl: element.web_url });
           unique.push(element.name);
           return true;

@@ -3,8 +3,6 @@ const express = require('express');
 const search = require('./search');
 const app = express();
 const port = process.env.PORT || 5001;
-const { randomize, getStreamingSources } = require('./randomize');
-const movieController = require('./movieController');
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
@@ -22,71 +20,13 @@ connectDB();
 
 //Route variables
 const watchList = require('./watchList');
+const randRoute = require('./randRoute');
 
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Main',
     heading: 'Welcome to this page built with Pug templates!',
   });
-});
-
-let data = { type: '', item: {} };
-app.get('/random', async (req, res) => {
-  const tmdbType = data.item.tmdb_type === 'movie' ? 'Movie' : 'TV Show';
-  res.render('random', {
-    init: 'CLICK ONE TO START',
-    type: data.type,
-    title: 'Choose for Me',
-    subheading: data.item.title,
-    poster: data.item.poster,
-    rating: data.item.user_rating || 'null',
-    tmdbType: tmdbType,
-    year: data.item.year,
-    plot: data.item.plot_overview,
-    id: data.item.id,
-  });
-  res.end();
-});
-
-app.post('/random/:type', async (req, res) => {
-  const type = req.body.type;
-  data.type = type;
-  if (data.type === 'watchList') {
-    console.log('entered watche list');
-    let list = await movieController.retrieveAllMovies();
-    data.item = await randomize(list);
-  } else {
-    data.item = await randomize(type);
-  }
-
-  res.end();
-});
-
-app.get('/random/:id', async (req, res) => {
-  const id = req.url.split('/').pop();
-  const param = data.item.trailer.toString().split('=').pop();
-  const trailer = new URL(param, 'https://www.youtube.com/embed/');
-  let sources = await getStreamingSources(id);
-  res.render('randDisplay', {
-    data: data.item,
-    trailer: trailer,
-    source: sources,
-  });
-  res.end();
-});
-
-app.post('/random/:id/add', async (req, res) => {
-  movieController
-    .addMovie(req.body)
-    .then(() => {
-      console.log('Add success');
-    })
-    .catch((err) => {
-      console.log('Add failed');
-      console.log(err);
-    });
-
-  res.end();
 });
 
 app.get('/about', (req, res) => {
@@ -124,6 +64,8 @@ app.get('/error', (req, res) => {
     err: 'Something went wrong',
   });
 });
+
+app.use('/random', randRoute);
 
 app.listen(port, () => {
   console.log(`listening on port http://localhost:${port}`);

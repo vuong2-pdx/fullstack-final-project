@@ -13,14 +13,17 @@ html
                 if year
                 |  (#{data.year})
               div.mx-auto.mx-lg-0
-                button.btn.btn-outline-dark.addToList(onclick='addToList(' + JSON.stringify(data) + ',' + JSON.stringify(source) + ')') Add to Watch List
+                if saved === true
+                  button.btn.btn-outline-dark.me-lg-2(disabled) In Your List
+                else
+                  button.btn.btn-outline-dark.me-lg-2.addToList(onclick='addToList(' + JSON.stringify(data) + ',' + JSON.stringify(source) + ')') Add to Watch List
             div.d-flex.flex-lg-row.flex-column.align-content-stretch
               img.d-block.m-2.mx-auto.mx-lg-0(src=data.poster alt='poster' height='417' width='278')
               div.ratio.ratio-16x9.m-2.align-self-xxl-stretch
                 iframe.embed-responsive-item(src=trailer title='trailer' allowfullscreen)
             div.d-flex.flex-row.flex-wrap
               each item in source
-                a.m-1.btn.btn-secondary(href=item.sourceUurl role='button') #{item.sourceName}
+                a.m-1.btn.btn-secondary(href=item.sourceUrl role='button') #{item.sourceName}
         div
           input.btn.btn-primary.mt-2.back(type="button" value="Go Back")
       script(src="/js/randDisplay.js")

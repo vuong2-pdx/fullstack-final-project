@@ -7,6 +7,7 @@ const fs = require('fs');
 // path for the id mapping json file
 const filePath = './src/list.json';
 
+// read the list
 const readList = (path) => {
   try {
     const data = fs.readFileSync(path, 'utf8');
@@ -16,7 +17,7 @@ const readList = (path) => {
   }
 };
 
-// // turn the csv id mapping data to array
+// store the list
 const list = readList(filePath);
 
 module.exports = {

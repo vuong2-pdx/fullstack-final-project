@@ -23,13 +23,14 @@ $('input[name=options]').on('click', function () {
   });
 });
 
+// handle thumbs down bottuns
 $('input[name=yesNo]').on('click', function () {
   const value = $('input:checked').val();
-  console.log(value);
 
   let url = `${window.location.href}/${value}`;
   console.log(url);
 
+  // thunbs down. Refresh the page to get another info
   if (value !== 'yes') {
     $.ajax({
       type: 'POST',
@@ -51,10 +52,13 @@ $('.back').on('click', function () {
   window.history.back();
 });
 
+// handle add to watch list
 function addToList(item, sources) {
+  // get the url
   let url = `${window.location.href}/add`;
   console.log(url);
 
+  // create object that matches the database schema
   let data = {
     movieID: item.id,
     imdbID: item.imdb_id,
