@@ -2,14 +2,14 @@
 // Display search form
 
 doctype html
-html
+html(lang='en')
   include includes/head.pug
   body
     header
       include includes/navbar.pug
     main.container
       form.bg-light.border.rounded.mx-auto.mt-5.p-3(action='/submit' method='post')
-        h2 #{heading}
+        h1 #{heading}
         p   
           .form-row
             .col-md-4.mb-1
