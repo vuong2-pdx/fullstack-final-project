@@ -13,5 +13,5 @@ html(lang='en')
             each item in results 
                 div.figure.m-4
                   a(href=`WatchList/${item.movieID}`)
-                    img.poster(src=item.poster alt=`movie poster for ${item.title}` width='185' height='278')
+                    img(src=item.poster alt='movie poster' width='185' height='278')
     include includes/footer.pug
