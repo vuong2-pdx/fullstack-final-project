@@ -8,6 +8,7 @@ const axios = require('axios');
 const {
   list, // the whole list of movies and tv shows available in US
 } = require('./loadList.js');
+<<<<<<< HEAD
 const { base } = require('./Movie.js');
 
 // api key for watchmode
@@ -26,6 +27,8 @@ const {
   movieTotal, // number of items in the movieList
   tvTotal, // number of items in the tvList
 } = require("./loadList.js");
+=======
+>>>>>>> d284406 (randmoze page 80%)
 
 // api key for watchmode
 const API_KEY = "XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt";
@@ -57,6 +60,7 @@ const randomize = (type) => {
   // randomly pick one from the list
   let id;
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (type === 'either') {
     id = getRandomID(list, list.length);
   }
@@ -76,16 +80,20 @@ const randomize = (type) => {
   if (type === undefined) {
     id = getRandomID(list, listTotal);
   }
+=======
+>>>>>>> d284406 (randmoze page 80%)
   if (type === 'either') {
-    id = getRandomID(list, listTotal);
+    id = getRandomID(list, list.length);
   }
   // movies only
 <<<<<<< HEAD
   if (type === 'movie') {
-    id = getRandomID(movieList, movieTotal);
+    const movieList = list.filter((element) => element.tmdb_type === 'movie');
+    id = getRandomID(movieList, movieList.length);
   }
   // tv shows only
   if (type === 'tv') {
+<<<<<<< HEAD
     id = getRandomID(tvList, tvTotal);
 =======
   if (type === "movie") {
@@ -95,6 +103,10 @@ const randomize = (type) => {
   if (type === "tv") {
     return getData(OMDB_BASE_URL, getRandomID(tvList, tvTotal));
 >>>>>>> main
+=======
+    const tvList = list.filter((element) => element.tmdb_type === 'movie');
+    id = getRandomID(tvList, tvList.length);
+>>>>>>> d284406 (randmoze page 80%)
   }
   // for now assume the saved watch list is passed in
   if (Array.isArray(type) === true) {

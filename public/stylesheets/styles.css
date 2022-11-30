@@ -10,7 +10,12 @@
 }
 
 body {
+<<<<<<< HEAD
   margin-bottom: 5em;
+=======
+  padding: 0 0.5em;
+  padding-bottom: 50px;
+>>>>>>> d284406 (randmoze page 80%)
 }
 
 h1,
@@ -159,7 +164,11 @@ span .visually-hidden {
 .card {
   padding: 14px;
   max-width: 600px;
+<<<<<<< HEAD
   min-width: 360px;
+=======
+  min-width: 450px;
+>>>>>>> d284406 (randmoze page 80%)
 }
 
 .rating {
@@ -180,6 +189,7 @@ span .visually-hidden {
   justify-content: center;
   width: 50px;
   height: 60px;
+<<<<<<< HEAD
 }
 
 .init {
@@ -290,4 +300,6 @@ i::before {
 .pencil-icon {
   float: right;
   cursor: pointer;
+=======
+>>>>>>> d284406 (randmoze page 80%)
 }

@@ -3,6 +3,11 @@ const express = require('express');
 const search = require('./search');
 const app = express();
 const port = process.env.PORT || 5001;
+<<<<<<< HEAD
+=======
+const { randomize } = require('./randomize');
+const movieController = require('./movieController');
+>>>>>>> d284406 (randmoze page 80%)
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
@@ -41,32 +46,54 @@ app.get('/', (req, res) => {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 let data = { type: 'either', item: {} };
+=======
+let data = { type: '', item: {} };
+>>>>>>> d284406 (randmoze page 80%)
 app.get('/random', async (req, res) => {
-  console.log(data.type);
+  const tmdbType = data.item.tmdb_type === 'movie' ? 'Movie' : 'TV Show';
   res.render('random', {
     type: data.type,
     title: 'Randomize',
-    heading: 'Randomize page',
     subheading: data.item.title,
     poster: data.item.poster,
+    rating: data.item.user_rating,
+    tmdbType: tmdbType,
     year: data.item.year,
     plot: data.item.plot_overview,
+    imdbId: data.item.imdb_id,
   });
   res.end();
 });
 
 app.post('/random/:type', async (req, res) => {
   const type = req.body.type;
-  console.log('app.post: ' + type);
   data.type = type;
-  data.item = await randomize(type);
+  let list = [];
+  if (data.type === 'watchList') {
+    console.log('entered watche list');
+    list = await movieController.retrieveAllMovies();
+    data.item = await randomize(list);
+    console.log(list);
+    console.log(data.item);
+  } else {
+    data.item = await randomize(type);
+  }
+  // console.log(data.item);
 
   res.end();
 });
 
+<<<<<<< HEAD
 >>>>>>> f86784e (randomize from movie or tv or all)
+=======
+app.get('/random/randd', (req, res) => {
+  res.render('randDisplay');
+});
+
+>>>>>>> d284406 (randmoze page 80%)
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About',
