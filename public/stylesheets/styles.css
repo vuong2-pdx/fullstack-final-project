@@ -12,6 +12,7 @@
 body {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-bottom: 5em;
 =======
   padding: 0 0.5em;
@@ -19,6 +20,8 @@ body {
 >>>>>>> d284406 (randmoze page 80%)
 =======
   padding: 0 0.5em;
+=======
+>>>>>>> adf1d25 (update homepage and overall style)
   margin-bottom: 5em;
 >>>>>>> fb6b4eb (randomize from watch list added)
 }
@@ -52,6 +55,7 @@ h4 {
   margin: 1em;
 }
 
+<<<<<<< HEAD
 .btn-primary {
   background-color: var(--dark-blue);
   border-color: var(--dark-blue);
@@ -73,6 +77,10 @@ h4 {
 
 .carousel-item h1,
 h2 {
+=======
+/* index.pug styles */
+.carousel-item h2 {
+>>>>>>> adf1d25 (update homepage and overall style)
   color: #222020;
 }
 
@@ -81,6 +89,7 @@ h2 {
   border-radius: 5px;
 }
 
+<<<<<<< HEAD
 span .visually-hidden {
   color: #ffffff;
 }
@@ -113,6 +122,27 @@ span .visually-hidden {
     #f299bb 100%
   );
   color: #222020;
+=======
+.tv-show-button{
+  background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
+  /* background-color: #f5b624; */
+  /* border-color: #f5b624; */
+  color: #222020
+}
+
+.movie-button{
+  background-image: linear-gradient(to right, #34559e 0%, #042e8b 51%, #34559e 100%);
+  /* background-color: #042e8b;
+  border-color: #042e8b; */
+  color: #fdf9f9;
+}
+
+.documentary-button{
+  /* background-color: #7d3160;
+  border-color: #7d3160; */
+  background-image: linear-gradient(to right, #b55177 0%, rgb(139, 26, 96) 51%, #b55177 100%);
+  color: #fdf9f9;
+>>>>>>> adf1d25 (update homepage and overall style)
 }
 
 /* highlightted text courtesy of : https://medium.com/@mattlistor/highlight-effect-using-css-204ab4590480 */
@@ -122,7 +152,11 @@ span .visually-hidden {
 
 .highlighted-text:after {
   background-color: #ffe359;
+<<<<<<< HEAD
   content: ' ';
+=======
+  content: " ";
+>>>>>>> adf1d25 (update homepage and overall style)
   height: 50%;
   position: absolute;
   left: 8px;
