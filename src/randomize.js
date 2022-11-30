@@ -10,7 +10,7 @@ const {
 const { base } = require("./Movie.js");
 
 // api key for watchmode
-const API_KEY = "lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt";
+const API_KEY = "cLy82DdLHmgY0omtM2BVemAa1fWqpaYALja7D8Wh";
 // api key for ombd
 const OMDB_API_KEY = "d4eeaaba";
 
