@@ -6,9 +6,8 @@ const port = process.env.PORT || 5001;
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
-
-// Use middleware urlencoded() to parse an incoming request with a urlencoded payload and return an object
-app.use(express.urlencoded({ extended: false }));
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 
 //Midlleware function to serve static files such as images or css
 app.use(express.static(__dirname + '/../' + '/public'));
