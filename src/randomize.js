@@ -121,6 +121,8 @@ const randomize = (type) => {
   return getData(WATCHMODE_BASE_URL, id);
 };
 
+const getSource = (sourceList) => {};
+
 const getData = async (baseUrl, id) => {
 <<<<<<< HEAD
   const url = new URL(`title/${id}/details/`, baseUrl);

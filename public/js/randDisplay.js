@@ -1,11 +1,18 @@
+<<<<<<< HEAD
 // Cheng Lin @cchlin
 
+=======
+>>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
 // get the value of the button selected and post it
 $('input[name=options]').on('click', function () {
   const value = $('input:checked').val();
   // $('#result').html(value + ' is checked');
   $(this).parent().addClass('active'); // set the active state for the selected button
+<<<<<<< HEAD
   $(this).parent().siblings().removeClass('active'); // deactive other buttons so there's only one button remain active
+=======
+  $(this).parent().siblings().removeClass('active');
+>>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
 
   let url = `${window.location.href}/${value}`;
   console.log(url);
@@ -25,14 +32,23 @@ $('input[name=options]').on('click', function () {
   });
 });
 
+<<<<<<< HEAD
 // handle thumbs down bottuns
 $('input[name=yesNo]').on('click', function () {
   const value = $('input:checked').val();
+=======
+$('input[name=yesNo]').on('click', function () {
+  const value = $('input:checked').val();
+  console.log(value);
+>>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
 
   let url = `${window.location.href}/${value}`;
   console.log(url);
 
+<<<<<<< HEAD
   // thunbs down. Refresh the page to get another info
+=======
+>>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
   if (value !== 'yes') {
     $.ajax({
       type: 'POST',
@@ -51,6 +67,7 @@ $('input[name=yesNo]').on('click', function () {
 });
 
 $('.back').on('click', function () {
+<<<<<<< HEAD
   window.history.back();
 });
 
@@ -90,3 +107,8 @@ function addToList(item, sources) {
     },
   });
 }
+=======
+  console.log('button clicked');
+  window.history.back();
+});
+>>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
