@@ -10,7 +10,11 @@ const {
 const { base } = require('./Movie.js');
 
 // api key for watchmode
+<<<<<<< HEAD
 const API_KEY = 'lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt';
+=======
+const API_KEY = '3CP5alQhhvxxhqKJXMqCa0kFf9RagfOFz3S7ZdKe';
+>>>>>>> f86784e (randomize from movie or tv or all)
 // api key for ombd
 const OMDB_API_KEY = 'd4eeaaba';
 
@@ -37,6 +41,7 @@ const getRandomID = (list, totalItem) => {
 const randomize = (type) => {
   // randomly pick one from the list
   let id;
+<<<<<<< HEAD
   if (type === 'either') {
     id = getRandomID(list, list.length);
   }
@@ -52,6 +57,24 @@ const randomize = (type) => {
   }
   // for now assume the saved watch list is passed in
   if (typeof type === 'object') {
+=======
+  if (type === undefined) {
+    id = getRandomID(list, listTotal);
+  }
+  if (type === 'either') {
+    id = getRandomID(list, listTotal);
+  }
+  // movies only
+  if (type === 'movie') {
+    id = getRandomID(movieList, movieTotal);
+  }
+  // tv shows only
+  if (type === 'tv') {
+    id = getRandomID(tvList, tvTotal);
+  }
+  // for now assume the saved watch list is passed in
+  if (Array.isArray(type) === true) {
+>>>>>>> f86784e (randomize from movie or tv or all)
     id = getRandomID(type, type.length);
   }
   // getStreamingSouces(id);
@@ -62,6 +85,11 @@ const getData = async (baseUrl, id) => {
   const url = new URL(`title/${id}/details/`, baseUrl);
   url.searchParams.set('apiKey', API_KEY);
 
+<<<<<<< HEAD
+=======
+  // console.log(url);
+
+>>>>>>> f86784e (randomize from movie or tv or all)
   let data = {};
 
   await axios
@@ -74,6 +102,7 @@ const getData = async (baseUrl, id) => {
   return data;
 };
 
+<<<<<<< HEAD
 const getStreamingSources = async (id) => {
   const url = new URL(`title/${id}/sources/`, WATCHMODE_BASE_URL);
   url.searchParams.set('apiKey', API_KEY);
@@ -100,3 +129,22 @@ const getStreamingSources = async (id) => {
 };
 
 module.exports = { randomize, getStreamingSources };
+=======
+// const getStreamingSouces = async (id) => {
+//   const url = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${API_KEY}`;
+//   console.log(url);
+
+//   let data = {};
+//   await axios
+//     .get(url)
+//     .then((response) => {
+//       data = response.data;
+//       console.log(data);
+//     })
+//     .catch((err) => console.log(err.message));
+
+//   return data;
+// };
+
+module.exports = { randomize };
+>>>>>>> f86784e (randomize from movie or tv or all)
