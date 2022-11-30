@@ -1,6 +1,6 @@
 /** @format */
 
-const axios = require('axios');
+const axios = require("axios");
 const {
   list, // the whole list of movies and tv shows available in US
   movieList, // only movies in the US
@@ -8,15 +8,15 @@ const {
   listTotal, // number of items in the list
   movieTotal, // number of items in the movieList
   tvTotal, // number of items in the tvList
-} = require('./loadList.js');
+} = require("./loadList.js");
 
 // api key for watchmode
-const API_KEY = 'XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt';
+const API_KEY = "XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt";
 // api key for ombd
-const OMDB_API_KEY = 'd4eeaaba';
+const OMDB_API_KEY = "d4eeaaba";
 
 // base url for watchmode
-const WATCHMODE_BASE_URL = new URL('https://api.watchmode.com/v1/');
+const WATCHMODE_BASE_URL = new URL("https://api.watchmode.com/v1/");
 // base url for omdb
 const OMDB_BASE_URL = new URL(`http://www.omdbapi.com/?apikey=${OMDB_API_KEY}`);
 
@@ -40,11 +40,11 @@ const randomize = (type) => {
     return getData(OMDB_BASE_URL, getRandomID(list, listTotal));
   }
   // movies only
-  if (type === 'movie') {
+  if (type === "movie") {
     return getData(OMDB_BASE_URL, getRandomID(movieList, movieTotal));
   }
   // tv shows only
-  if (type === 'tv') {
+  if (type === "tv") {
     return getData(OMDB_BASE_URL, getRandomID(tvList, tvTotal));
   }
   // for now assume the saved watch list is passed in
@@ -55,7 +55,7 @@ const randomize = (type) => {
 
 const getData = async (baseUrl, id) => {
   const url = new URL(baseUrl);
-  url.searchParams.set('i', id);
+  url.searchParams.set("i", id);
 
   let data = {};
 
