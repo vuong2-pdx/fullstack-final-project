@@ -300,6 +300,17 @@ span .visually-hidden {
   margin-top: 50px;
 }
 
+.nameCard {
+  border-style: solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+.poweredBy a {
+  text-align: center;
+  text-decoration: none;
+}
+
 .star-icon:hover:before,
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {

@@ -1,9 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Cheng Lin @cchlin
 // Router for /random endpoint
 
 =======
 >>>>>>> 0920174 (randomize all done)
+=======
+// Cheng Lin @cchlin
+// Router for /random endpoint
+
+>>>>>>> 456b1a4 (about page)
 const express = require('express');
 const router = express.Router();
 

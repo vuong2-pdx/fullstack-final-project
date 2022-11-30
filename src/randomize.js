@@ -1,6 +1,9 @@
 /** @format */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 456b1a4 (about page)
 // Cheng Lin @cchlin
 // functions for ranomize
 
