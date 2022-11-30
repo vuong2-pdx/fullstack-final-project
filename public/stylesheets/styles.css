@@ -9,34 +9,14 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbar-brand {
-  padding-left: 2rem;
-}
 body {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   margin-bottom: 5em;
-=======
-  padding: 0 0.5em;
-  padding-bottom: 50px;
->>>>>>> d284406 (randmoze page 80%)
-=======
-  padding: 0 0.5em;
-=======
->>>>>>> adf1d25 (update homepage and overall style)
-  margin-bottom: 5em;
->>>>>>> fb6b4eb (randomize from watch list added)
 }
 
 h1,
-<<<<<<< HEAD
 h2,
 h3,
 h4 {
-=======
-h2 {
->>>>>>> 1c61fca (accessibility fixes)
   color: var(--dark-green);
 }
 
@@ -52,7 +32,7 @@ h2 {
 }
 
 .footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
   z-index: 999;
@@ -62,16 +42,11 @@ h2 {
   margin: 1em;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 1c61fca (accessibility fixes)
 .btn-primary {
   background-color: var(--dark-blue);
   border-color: var(--dark-blue);
 }
 
-<<<<<<< HEAD
 /* index.pug styles */
 .carousel,
 .carousel-container {
@@ -88,21 +63,6 @@ h2 {
 
 .carousel-item h1,
 h2 {
-<<<<<<< HEAD
-=======
-/* index.pug styles */
-.carousel-item h2 {
->>>>>>> adf1d25 (update homepage and overall style)
-=======
-/* index.pug styles */
-.carousel {
-  z-index: -1;
-}
-
-.carousel-item h1, h2 {
->>>>>>> 1c61fca (accessibility fixes)
-=======
->>>>>>> 53d160f (randomize result page done)
   color: #222020;
 }
 
@@ -111,7 +71,6 @@ h2 {
   border-radius: 5px;
 }
 
-<<<<<<< HEAD
 span .visually-hidden {
   color: #ffffff;
 }
@@ -124,7 +83,6 @@ span .visually-hidden {
     #f5b624 100%
   );
   color: #222020;
-<<<<<<< HEAD
 }
 
 .movie-button {
@@ -145,39 +103,6 @@ span .visually-hidden {
     #f299bb 100%
   );
   color: #222020;
-=======
-.tv-show-button{
-  background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
-  color: #222020
-=======
->>>>>>> 53d160f (randomize result page done)
-}
-
-.movie-button {
-  background-image: linear-gradient(
-    to right,
-    #34559e 0%,
-    #042e8b 51%,
-    #34559e 100%
-  );
-  color: #fdf9f9;
-}
-
-<<<<<<< HEAD
-.documentary-button{
-  background-image: linear-gradient(to right, #b55177 0%, rgb(139, 26, 96) 51%, #b55177 100%);
-  color: #fdf9f9;
->>>>>>> adf1d25 (update homepage and overall style)
-=======
-.documentary-button {
-  background-image: linear-gradient(
-    to right,
-    #f299bb 0%,
-    #e69459 51%,
-    #f299bb 100%
-  );
-  color: #222020;
->>>>>>> 53d160f (randomize result page done)
 }
 
 /* highlightted text courtesy of : https://medium.com/@mattlistor/highlight-effect-using-css-204ab4590480 */
@@ -187,15 +112,7 @@ span .visually-hidden {
 
 .highlighted-text:after {
   background-color: #ffe359;
-<<<<<<< HEAD
-<<<<<<< HEAD
   content: ' ';
-=======
-  content: " ";
->>>>>>> adf1d25 (update homepage and overall style)
-=======
-  content: ' ';
->>>>>>> 53d160f (randomize result page done)
   height: 50%;
   position: absolute;
   left: 8px;
@@ -242,15 +159,7 @@ span .visually-hidden {
 .card {
   padding: 14px;
   max-width: 600px;
-<<<<<<< HEAD
-<<<<<<< HEAD
   min-width: 360px;
-=======
-  min-width: 450px;
->>>>>>> d284406 (randmoze page 80%)
-=======
-  min-width: 360px;
->>>>>>> 53d160f (randomize result page done)
 }
 
 .rating {
@@ -271,29 +180,6 @@ span .visually-hidden {
   justify-content: center;
   width: 50px;
   height: 60px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-
-.init {
-  margin-top: 50px;
-}
-
-.nameCard {
-  border-style: solid;
-  margin: 20px;
-  padding: 20px;
-}
-
-.nameCard div {
-  width: 215.1px;
-}
-
-.poweredBy a {
-  text-align: center;
-  text-decoration: none;
-=======
->>>>>>> fb6b4eb (randomize from watch list added)
 }
 
 .init {
@@ -319,7 +205,6 @@ span .visually-hidden {
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
   content: '\f005';
-<<<<<<< HEAD
 }
 
 /*Accessibility*/
@@ -336,8 +221,6 @@ span .visually-hidden {
 
 .hide-text {
   text-indent: -9999px;
-=======
->>>>>>> fb6b4eb (randomize from watch list added)
 }
 
 /* searchResults.pug styles */
@@ -407,6 +290,4 @@ i::before {
 .pencil-icon {
   float: right;
   cursor: pointer;
-=======
->>>>>>> d284406 (randmoze page 80%)
 }
