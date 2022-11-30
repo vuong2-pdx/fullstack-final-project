@@ -109,8 +109,12 @@ const randomize = (type) => {
 >>>>>>> d284406 (randmoze page 80%)
   }
   // for now assume the saved watch list is passed in
+<<<<<<< HEAD
   if (Array.isArray(type) === true) {
 >>>>>>> f86784e (randomize from movie or tv or all)
+=======
+  if (typeof type === 'object') {
+>>>>>>> fb6b4eb (randomize from watch list added)
     id = getRandomID(type, type.length);
   }
   // getStreamingSouces(id);

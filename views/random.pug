@@ -80,9 +80,14 @@ html(lang='en')
       div.text-center.mt-4
 >>>>>>> d284406 (randmoze page 80%)
         div.btn-group.btn-group-toggle
-          label.btn.btn-secondary.watchList
-            input(type='radio' name='options' value='watchList')
-            |  My Saved List
+          if type === 'watchList'
+            label.btn.btn-secondary.watchList.active
+              input(type='radio' name='options' value='watchList')
+              |  My Saved List
+          else
+            label.btn.btn-secondary.watchList
+              input(type='radio' name='options' value='watchList')
+              |  My Saved List
           if type === "movie"
             label.btn.btn-secondary.movie.active
               input(type='radio' name='options' value="movie" checked)
@@ -111,13 +116,13 @@ html(lang='en')
         div.bg-light.border.rounded.w-50.mx-auto.mt-5.card
           h3.text-center.mt-3 #{subheading}
           div
-            img.mx-auto.d-block(src=poster, alt='poster' height='278' width='185')
+            img.mx-auto.d-block(src=poster, alt='poster' height='417' width='278')
             div.d-flex.justify-content-center.mt-3
                 if rating >= 7.5
                   p.mx-2.rating.bg-success.text-white #{rating}
                 else if rating <= 4
                   p.mx-2.rating.bg-danger.text-white #{rating}
-                else if rating === null
+                else if (typeof(rating) === 'undifined')
                   p.mx-2 No data
                 else
                   p.mx-2.rating.bg-warning.text-dark #{rating}
