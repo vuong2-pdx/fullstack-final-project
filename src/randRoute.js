@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 // Cheng Lin @cchlin
 // Router for /random endpoint
 
-=======
->>>>>>> 0920174 (randomize all done)
-=======
-// Cheng Lin @cchlin
-// Router for /random endpoint
-
->>>>>>> 456b1a4 (about page)
 const express = require('express');
 const router = express.Router();
 
@@ -18,27 +9,11 @@ const randomize = require('./randomize');
 
 let data = { type: '', item: {} };
 router.get('/', async (req, res) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
   const tmdbType = data.item.tmdb_type === 'Movie' ? 'Movie' : 'TV Show';
 
   res.render('random', {
     init: 'CLICK ONE TO START',
     Dtype: data.type,
-=======
-  const tmdbType = data.item.tmdb_type === 'movie' ? 'Movie' : 'TV Show';
-
-  res.render('random', {
-    init: 'CLICK ONE TO START',
-    type: data.type,
->>>>>>> 0920174 (randomize all done)
-=======
-  const tmdbType = data.item.tmdb_type === 'Movie' ? 'Movie' : 'TV Show';
-
-  res.render('random', {
-    init: 'CLICK ONE TO START',
-    Dtype: data.type,
->>>>>>> 13475ac (minor variable fix)
     title: 'Choose for Me',
     subheading: data.item.title,
     poster: data.item.poster,
@@ -54,16 +29,7 @@ router.get('/', async (req, res) => {
 
 router.post('/:type', async (req, res) => {
   const type = req.body.type;
-<<<<<<< HEAD
-<<<<<<< HEAD
   if (type === 'watchList') {
-=======
-  data.type = type;
-  if (data.type === 'watchList') {
->>>>>>> 0920174 (randomize all done)
-=======
-  if (type === 'watchList') {
->>>>>>> 13475ac (minor variable fix)
     console.log('entered watche list');
     let list = await movieController.retrieveAllMovies();
     data.item = await randomize.randomize(list);

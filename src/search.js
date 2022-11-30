@@ -10,15 +10,9 @@ const OMDB_BASE_URL = `http://www.omdbapi.com/?apikey=${OMDB_API_KEY}&`;
 // Default returns short plot in JSON format
 const OMDB_ID_SEARCH = `${OMDB_BASE_URL}&i=`;
 
-<<<<<<< HEAD
 // Watchmode API Basic Info
 const WATCHMODE_API_KEY = 'sezZXrR2UOVDESisF7GvHi0XjgPjpTU5aUxKb1pa';
 const WATCHMODE_BASE_URL = 'https://api.watchmode.com/v1';
-=======
-const WATCHMODE_API_KEY = "hsf4Ve5UGj32ofw8uwFgpme7mqfTGz23sROAUqOg";
-
-const WATCHMODE_BASE_URL = "https://api.watchmode.com/v1";
->>>>>>> 1c61fca (accessibility fixes)
 
 // URL to hit Watchmode's Search API endpoint
 const WATCHMODE_SEARCH_URL = `${WATCHMODE_BASE_URL}/search/?apiKey=${WATCHMODE_API_KEY}`;

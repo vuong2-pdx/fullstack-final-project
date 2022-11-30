@@ -1,9 +1,5 @@
 /** @format */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 456b1a4 (about page)
 // Cheng Lin @cchlin
 // functions for ranomize
 
@@ -11,43 +7,15 @@ const axios = require('axios');
 const {
   list, // the whole list of movies and tv shows available in US
 } = require('./loadList.js');
-<<<<<<< HEAD
-<<<<<<< HEAD
-const { base } = require('./Movie.js');
-
-// api key for watchmode
-<<<<<<< HEAD
-const API_KEY = 'lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt';
-=======
-const API_KEY = '3CP5alQhhvxxhqKJXMqCa0kFf9RagfOFz3S7ZdKe';
->>>>>>> f86784e (randomize from movie or tv or all)
-=======
-const axios = require("axios");
-const {
-  list, // the whole list of movies and tv shows available in US
-  movieList, // only movies in the US
-  tvList, // only tv shows in the US
-  listTotal, // number of items in the list
-  movieTotal, // number of items in the movieList
-  tvTotal, // number of items in the tvList
-} = require("./loadList.js");
-=======
->>>>>>> d284406 (randmoze page 80%)
-
-// api key for watchmode
-const API_KEY = "XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt";
->>>>>>> main
-=======
 const { base } = require('./Movie.js');
 
 // api key for watchmode
 const API_KEY = 'lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt';
->>>>>>> 53d160f (randomize result page done)
 // api key for ombd
-const OMDB_API_KEY = "d4eeaaba";
+const OMDB_API_KEY = 'd4eeaaba';
 
 // base url for watchmode
-const WATCHMODE_BASE_URL = new URL("https://api.watchmode.com/v1/");
+const WATCHMODE_BASE_URL = new URL('https://api.watchmode.com/v1/');
 // base url for omdb
 const OMDB_BASE_URL = new URL(`http://www.omdbapi.com/?apikey=${OMDB_API_KEY}`);
 
@@ -69,14 +37,11 @@ const getRandomID = (list, totalItem) => {
 const randomize = (type) => {
   // randomly pick one from the list
   let id;
-<<<<<<< HEAD
-<<<<<<< HEAD
   if (type === 'either') {
     id = getRandomID(list, list.length);
   }
   // movies only
   if (type === 'Movie') {
-<<<<<<< HEAD
     const movieList = list.filter((element) => element.tmdb_type === 'movie');
     id = getRandomID(movieList, movieList.length);
   }
@@ -87,52 +52,6 @@ const randomize = (type) => {
   }
   // for now assume the saved watch list is passed in
   if (typeof type === 'object') {
-=======
-  if (type === undefined) {
-    id = getRandomID(list, listTotal);
-  }
-=======
->>>>>>> d284406 (randmoze page 80%)
-  if (type === 'either') {
-    id = getRandomID(list, list.length);
-  }
-  // movies only
-<<<<<<< HEAD
-  if (type === 'movie') {
-=======
->>>>>>> 13475ac (minor variable fix)
-    const movieList = list.filter((element) => element.tmdb_type === 'movie');
-    id = getRandomID(movieList, movieList.length);
-  }
-  // tv shows only
-<<<<<<< HEAD
-  if (type === 'tv') {
-<<<<<<< HEAD
-    id = getRandomID(tvList, tvTotal);
-=======
-  if (type === "movie") {
-    return getData(OMDB_BASE_URL, getRandomID(movieList, movieTotal));
-  }
-  // tv shows only
-  if (type === "tv") {
-    return getData(OMDB_BASE_URL, getRandomID(tvList, tvTotal));
->>>>>>> main
-=======
-    const tvList = list.filter((element) => element.tmdb_type === 'movie');
-=======
-  if (type === 'TV Show') {
-    const tvList = list.filter((element) => element.tmdb_type === 'tv');
->>>>>>> 13475ac (minor variable fix)
-    id = getRandomID(tvList, tvList.length);
->>>>>>> d284406 (randmoze page 80%)
-  }
-  // for now assume the saved watch list is passed in
-<<<<<<< HEAD
-  if (Array.isArray(type) === true) {
->>>>>>> f86784e (randomize from movie or tv or all)
-=======
-  if (typeof type === 'object') {
->>>>>>> fb6b4eb (randomize from watch list added)
     id = getRandomID(type, type.length);
   }
   // getStreamingSouces(id);
@@ -140,22 +59,9 @@ const randomize = (type) => {
 };
 
 const getData = async (baseUrl, id) => {
-<<<<<<< HEAD
   const url = new URL(`title/${id}/details/`, baseUrl);
   url.searchParams.set('apiKey', API_KEY);
-=======
-  const url = new URL(baseUrl);
-  url.searchParams.set("i", id);
->>>>>>> main
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  // console.log(url);
-
->>>>>>> f86784e (randomize from movie or tv or all)
-=======
->>>>>>> 53d160f (randomize result page done)
   let data = {};
 
   await axios
@@ -168,15 +74,10 @@ const getData = async (baseUrl, id) => {
   return data;
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 53d160f (randomize result page done)
 const getStreamingSources = async (id) => {
   const url = new URL(`title/${id}/sources/`, WATCHMODE_BASE_URL);
   url.searchParams.set('apiKey', API_KEY);
   url.searchParams.set('regions', 'US');
-<<<<<<< HEAD
 
   let data = []; // create a array to return
   await axios
@@ -199,39 +100,3 @@ const getStreamingSources = async (id) => {
 };
 
 module.exports = { randomize, getStreamingSources };
-=======
-// const getStreamingSouces = async (id) => {
-//   const url = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${API_KEY}`;
-//   console.log(url);
-=======
->>>>>>> 53d160f (randomize result page done)
-
-  let data = []; // create a array to return
-  await axios
-    .get(url)
-    .then((response) => {
-      let unique = []; // temp array to check if the sources exist
-      response.data.map((element) => {
-        // map through all the source
-        if (!unique.includes(element.name)) {
-          // if the source name is not found, push it
-          data.push({ sourceName: element.name, sourceUrl: element.web_url });
-          unique.push(element.name);
-          return true;
-        }
-        return false;
-      });
-    })
-    .catch((err) => console.log(err.message));
-  return data;
-};
-
-<<<<<<< HEAD
-//   return data;
-// };
-
-module.exports = { randomize };
->>>>>>> f86784e (randomize from movie or tv or all)
-=======
-module.exports = { randomize, getStreamingSources };
->>>>>>> 53d160f (randomize result page done)
