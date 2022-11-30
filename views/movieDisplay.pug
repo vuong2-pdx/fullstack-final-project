@@ -15,38 +15,44 @@ html(lang='en')
         
         //-Star Rating
         div.d-flex.justify-content-between.mt-4
-          div#rating-container.rating-container.mt-3
+          fieldset#rating-container.rating-container.mt-3
+            legend.visually-hidden Your Rating
             if rating == 5
-              input#star5.input( type='radio' name='rating' value='star5' checked )
+              input#star5.input(type='radio' name='rating' value='star5' checked)
             else 
               input#star5.input(type='radio' name='rating' value='star5' )
-            label.star-icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star5' title='5 out of 5' aria-label="5 out of 5 stars")
+              span.visually-hidden 5 stars
             if rating == 4
               input#star4.input(type='radio' name='rating' value='star4' checked )
             else
               input#star4.input(type='radio' name='rating' value='star4' )
-            label.star-icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star4' title='4 out of 5' aria-label="4 out of 5 stars")
+              span.visually-hidden 4 stars
             if rating == 3
               input#star3.input(type='radio' name='rating' value='star3' checked )
             else
               input#star3.input(type='radio' name='rating' value='star3' )
-            label.star-icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star3' title='3 out of 5' aria-label="3 out of 5 stars")
+              span.visually-hidden 3 stars
             if rating == 2
               input#star2.input(type='radio' name='rating' value='star2' checked )
             else
               input#star2.input(type='radio' name='rating' value='star2' )
-            label.star-icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star2' title='2 out of 5' aria-label="2 out of 5 stars")
+              span.visually-hidden 2 stars
             if rating == 1
               input#star1.input(type='radio' name='rating' value='star1', )
             else
               input#star1.input(type='radio' name='rating' value='star1')
-            label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5')
+            label.star-icon.fa.fa-star-o.fa-lg(for='star1' title='1 out of 5' aria-label="1 out of 5 stars")
+              span.visually-hidden 1 stars
           
           //-Title Type 
-          p.text-secondary.mt-3 Type: #{type}
+          p.mt-3 Type: #{type}
 
           //- Year
-          p.text-secondary.mt-3 Year: #{year}
+          p.mt-3 Year: #{year}
 
           //- Watched button
           div#watched-container
@@ -65,7 +71,7 @@ html(lang='en')
           div#edit-container.m-2
             input#edit.input(type='radio' name='edit')
             label.pencil-icon.fa.fa-pencil(for='edit' title='Edit your review')
-        
+              span.visually-hidden Edit review
         //-Movie Plot
         h4.text-center.mt-3 Plot
         div#review-container.d-flex.justify-content-center

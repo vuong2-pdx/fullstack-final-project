@@ -14,7 +14,9 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   color: var(--dark-green);
 }
 
@@ -46,19 +48,21 @@ h2 {
 }
 
 /* index.pug styles */
-.carousel, .carousel-container {
+.carousel,
+.carousel-container {
   width: 85%;
   padding-top: 1em;
   margin: auto;
 }
 
-.carousel-item img{
+.carousel-item img {
   width: 100%;
   margin: auto;
   vertical-align: middle;
 }
 
-.carousel-item h1, h2 {
+.carousel-item h1,
+h2 {
   color: #222020;
 }
 
@@ -71,18 +75,33 @@ span .visually-hidden {
   color: #ffffff;
 }
 
-.tv-show-button{
-  background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
-  color: #222020
+.tv-show-button {
+  background-image: linear-gradient(
+    to right,
+    #f5b624 0%,
+    #fda085 51%,
+    #f5b624 100%
+  );
+  color: #222020;
 }
 
-.movie-button{
-  background-image: linear-gradient(to right, #34559e 0%, #042e8b 51%, #34559e 100%);
+.movie-button {
+  background-image: linear-gradient(
+    to right,
+    #34559e 0%,
+    #042e8b 51%,
+    #34559e 100%
+  );
   color: #fdf9f9;
 }
 
-.documentary-button{
-  background-image: linear-gradient(to right, #f299bb 0%, #e69459 51%, #f299bb 100%);
+.documentary-button {
+  background-image: linear-gradient(
+    to right,
+    #f299bb 0%,
+    #e69459 51%,
+    #f299bb 100%
+  );
   color: #222020;
 }
 
@@ -114,7 +133,9 @@ span .visually-hidden {
   height: 60%;
 }
 
-/* movieDisplay.pug styles */
+.poster:hover {
+  transform: scale(1.1);
+}
 
 /* Stars */
 .input {
@@ -127,12 +148,28 @@ span .visually-hidden {
 .star-icon {
   float: right;
   cursor: pointer;
-  color: #f9b008;
+  color: #b88817;
 }
 .star-icon:hover:before,
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
   content: "\f005";
+}
+
+/*Accessibility*/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hide-text {
+  text-indent: -9999px;
 }
 
 /* searchResults.pug styles */
@@ -165,7 +202,7 @@ span .visually-hidden {
   height: 85%;
 }
 
-.card-wrapper span{
+.card-wrapper span {
   padding-left: 7px;
 }
 
