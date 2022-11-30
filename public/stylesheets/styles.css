@@ -112,7 +112,7 @@ span .visually-hidden {
 
 .highlighted-text:after {
   background-color: #ffe359;
-  content: " ";
+  content: ' ';
   height: 50%;
   position: absolute;
   left: 8px;
@@ -150,10 +150,61 @@ span .visually-hidden {
   cursor: pointer;
   color: #b88817;
 }
+.icon:hover:before,
+.icon:hover ~ .icon:before,
+.input:checked ~ .icon:before {
+  content: '\f005';
+}
+
+.card {
+  padding: 14px;
+  max-width: 600px;
+  min-width: 360px;
+}
+
+.rating {
+  text-align: center;
+  width: 38px;
+  border-radius: 5px;
+}
+
+.yesNo {
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+}
+
+.ynbutton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 60px;
+}
+
+.init {
+  margin-top: 50px;
+}
+
+.nameCard {
+  border-style: solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+.nameCard div {
+  width: 215.1px;
+}
+
+.poweredBy a {
+  text-align: center;
+  text-decoration: none;
+}
+
 .star-icon:hover:before,
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
-  content: "\f005";
+  content: '\f005';
 }
 
 /*Accessibility*/
