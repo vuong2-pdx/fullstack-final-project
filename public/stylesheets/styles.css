@@ -27,9 +27,13 @@ body {
 }
 
 h1,
+<<<<<<< HEAD
 h2,
 h3,
 h4 {
+=======
+h2 {
+>>>>>>> 1c61fca (accessibility fixes)
   color: var(--dark-green);
 }
 
@@ -56,11 +60,15 @@ h4 {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1c61fca (accessibility fixes)
 .btn-primary {
   background-color: var(--dark-blue);
   border-color: var(--dark-blue);
 }
 
+<<<<<<< HEAD
 /* index.pug styles */
 .carousel,
 .carousel-container {
@@ -81,6 +89,10 @@ h2 {
 /* index.pug styles */
 .carousel-item h2 {
 >>>>>>> adf1d25 (update homepage and overall style)
+=======
+/* index.pug styles */
+.carousel-item h1, h2 {
+>>>>>>> 1c61fca (accessibility fixes)
   color: #222020;
 }
 
