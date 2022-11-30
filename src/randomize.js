@@ -76,6 +76,7 @@ const randomize = (type) => {
   }
   // movies only
   if (type === 'Movie') {
+<<<<<<< HEAD
     const movieList = list.filter((element) => element.tmdb_type === 'movie');
     id = getRandomID(movieList, movieList.length);
   }
@@ -98,10 +99,13 @@ const randomize = (type) => {
   // movies only
 <<<<<<< HEAD
   if (type === 'movie') {
+=======
+>>>>>>> 13475ac (minor variable fix)
     const movieList = list.filter((element) => element.tmdb_type === 'movie');
     id = getRandomID(movieList, movieList.length);
   }
   // tv shows only
+<<<<<<< HEAD
   if (type === 'tv') {
 <<<<<<< HEAD
     id = getRandomID(tvList, tvTotal);
@@ -115,6 +119,10 @@ const randomize = (type) => {
 >>>>>>> main
 =======
     const tvList = list.filter((element) => element.tmdb_type === 'movie');
+=======
+  if (type === 'TV Show') {
+    const tvList = list.filter((element) => element.tmdb_type === 'tv');
+>>>>>>> 13475ac (minor variable fix)
     id = getRandomID(tvList, tvList.length);
 >>>>>>> d284406 (randmoze page 80%)
   }
