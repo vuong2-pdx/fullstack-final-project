@@ -46,10 +46,10 @@ html
         if year
         |  (#{year})
       div.card
-        div.d-flex.flex-lg-row.flex-column.justify-content-md-center
-          img.d-block.mx-2.my-2.justify-content-center(src=poster alt='poster' height='417' width='278')
-          div.embed-responsive.embed-responsive-16by9.mx-2.my-2
-            iframe.embed-responsive-item(src=trailer allowfullscreen)
+        div.d-flex.flex-lg-row.flex-column.align-content-stretch
+          img.d-block.mx-2.my-2.align-self-center(src=poster alt='poster' height='417' width='278')
+          div.ratio.ratio-16x9.my-2.mx-2.align-self-xxl-stretch
+            iframe.embed-responsive-item(src=trailer title='trailer' allowfullscreen)
         div.d-flex.flex-row
           button source link
           button source link

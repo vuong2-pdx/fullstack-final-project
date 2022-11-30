@@ -78,40 +78,44 @@ html(lang='en')
 =======
     maim.container
       div.text-center.mt-4
+<<<<<<< HEAD
 >>>>>>> d284406 (randmoze page 80%)
         div.btn-group.btn-group-toggle
+=======
+        div.btn-group(role='group' arial-label='Basic radio toggle button')
+>>>>>>> c9c4399 (edited minor bootstrap change)
           if type === 'watchList'
             label.btn.btn-secondary.watchList.active
-              input(type='radio' name='options' value='watchList')
+              input.btn-check(type='radio' name='options' value='watchList')
               |  My Saved List
           else
             label.btn.btn-secondary.watchList
-              input(type='radio' name='options' value='watchList')
+              input.btn-check(type='radio' name='options' value='watchList')
               |  My Saved List
           if type === "movie"
             label.btn.btn-secondary.movie.active
-              input(type='radio' name='options' value="movie" checked)
+              input.btn-check(type='radio' name='options' value="movie" checked)
               |  Movie
           else
             label.btn.btn-secondary.movie
-              input(type='radio' name='options' value="movie")
+              input.btn-check(type='radio' name='options' value="movie")
               |  Movie
           if type === "tv"
             label.btn.btn-secondary.tv.active
-              input(type='radio' name='options' value="tv" checked)
+              input.btn-check(type='radio' name='options' value="tv" checked)
               |  TV Show
           else
             label.btn.btn-secondary.tv
-              input(type='radio' name='options' value="tv")
+              input.btn-check(type='radio' name='options' value="tv")
               |  TV Show
           if type === "either"
             label.btn.btn-secondary.either.active
-              input(type='radio' name='options' value="either" checked)
-              |  Either
+              input.btn-check(type='radio' name='options' value="either" checked)
+              |  All
           else
             label.btn.btn-secondary.either
-              input(type='radio' name='options' value="either")
-              |  Either
+              input.btn-check(type='radio' name='options' value="either")
+              |  All
       if subheading
         div.bg-light.border.rounded.w-50.mx-auto.mt-5.card
           h3.text-center.mt-3 #{subheading}
@@ -131,7 +135,7 @@ html(lang='en')
             p.w-75.mx-auto.text-center #{plot}
             div.btn-group.btn-group-toggle.d-flex.mt-3.w-50.h-50.mx-auto.justify-content-center
               label.btn.btn-danger.mx-1.rounded.ynbutton
-                input(type="radio" name="yesNo", value=tmdbType)
+                input.btn-check(type="radio" name="yesNo", value=tmdbType)
                 |  👎
 <<<<<<< HEAD
               a(class="btn btn-success mx-1 rounded ynbutton" href="random/randd", role="button") 👍
