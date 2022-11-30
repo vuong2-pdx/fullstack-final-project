@@ -5,6 +5,7 @@ const app = express();
 const port = process.env.PORT || 5001;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 const { randomize } = require('./randomize');
 =======
@@ -12,6 +13,8 @@ const { randomize, getStreamingSources } = require('./randomize');
 >>>>>>> 53d160f (randomize result page done)
 const movieController = require('./movieController');
 >>>>>>> d284406 (randmoze page 80%)
+=======
+>>>>>>> 0920174 (randomize all done)
 
 app.set('views', __dirname + '/../' + 'views');
 app.set('view engine', 'pug');
@@ -36,11 +39,14 @@ connectDB();
 <<<<<<< HEAD
 const watchList = require('./watchList');
 const randRoute = require('./randRoute');
+<<<<<<< HEAD
 =======
 const watchList = require('./routes/watchList');
 const { format } = require('path');
 const { URLSearchParams } = require('url');
 >>>>>>> f86784e (randomize from movie or tv or all)
+=======
+>>>>>>> 0920174 (randomize all done)
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -49,6 +55,7 @@ app.get('/', (req, res) => {
   });
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -130,6 +137,8 @@ app.post('/random/:id/add', async (req, res) => {
 });
 
 >>>>>>> d284406 (randmoze page 80%)
+=======
+>>>>>>> 0920174 (randomize all done)
 app.get('/about', (req, res) => {
   res.render('about', {
     title: 'About',

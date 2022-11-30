@@ -195,13 +195,15 @@ module.exports = { randomize, getStreamingSources };
 =======
 >>>>>>> 53d160f (randomize result page done)
 
-  let data = [];
+  let data = []; // create a array to return
   await axios
     .get(url)
     .then((response) => {
-      let unique = [];
+      let unique = []; // temp array to check if the sources exist
       response.data.map((element) => {
+        // map through all the source
         if (!unique.includes(element.name)) {
+          // if the source name is not found, push it
           data.push({ sourceName: element.name, sourceUrl: element.web_url });
           unique.push(element.name);
           return true;

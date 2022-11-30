@@ -33,6 +33,7 @@ $('input[name=options]').on('click', function () {
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // handle thumbs down bottuns
 $('input[name=yesNo]').on('click', function () {
   const value = $('input:checked').val();
@@ -41,14 +42,23 @@ $('input[name=yesNo]').on('click', function () {
   const value = $('input:checked').val();
   console.log(value);
 >>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
+=======
+// handle thumbs down bottuns
+$('input[name=yesNo]').on('click', function () {
+  const value = $('input:checked').val();
+>>>>>>> 0920174 (randomize all done)
 
   let url = `${window.location.href}/${value}`;
   console.log(url);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   // thunbs down. Refresh the page to get another info
 =======
 >>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
+=======
+  // thunbs down. Refresh the page to get another info
+>>>>>>> 0920174 (randomize all done)
   if (value !== 'yes') {
     $.ajax({
       type: 'POST',
@@ -117,10 +127,13 @@ function addToList(item, sources) {
   window.history.back();
 });
 
+// handle add to watch list
 function addToList(item, sources) {
+  // get the url
   let url = `${window.location.href}/add`;
   console.log(url);
 
+  // create object that matches the database schema
   let data = {
     movieID: item.id,
     imdbID: item.imdb_id,
