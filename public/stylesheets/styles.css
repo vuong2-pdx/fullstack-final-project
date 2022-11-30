@@ -88,6 +88,7 @@ h2 {
 
 .carousel-item h1,
 h2 {
+<<<<<<< HEAD
 =======
 /* index.pug styles */
 .carousel-item h2 {
@@ -100,6 +101,8 @@ h2 {
 
 .carousel-item h1, h2 {
 >>>>>>> 1c61fca (accessibility fixes)
+=======
+>>>>>>> 53d160f (randomize result page done)
   color: #222020;
 }
 
@@ -121,6 +124,7 @@ span .visually-hidden {
     #f5b624 100%
   );
   color: #222020;
+<<<<<<< HEAD
 }
 
 .movie-button {
@@ -145,17 +149,35 @@ span .visually-hidden {
 .tv-show-button{
   background-image: linear-gradient(to right, #f5b624 0%, #fda085 51%, #f5b624 100%);
   color: #222020
+=======
+>>>>>>> 53d160f (randomize result page done)
 }
 
-.movie-button{
-  background-image: linear-gradient(to right, #34559e 0%, #042e8b 51%, #34559e 100%);
+.movie-button {
+  background-image: linear-gradient(
+    to right,
+    #34559e 0%,
+    #042e8b 51%,
+    #34559e 100%
+  );
   color: #fdf9f9;
 }
 
+<<<<<<< HEAD
 .documentary-button{
   background-image: linear-gradient(to right, #b55177 0%, rgb(139, 26, 96) 51%, #b55177 100%);
   color: #fdf9f9;
 >>>>>>> adf1d25 (update homepage and overall style)
+=======
+.documentary-button {
+  background-image: linear-gradient(
+    to right,
+    #f299bb 0%,
+    #e69459 51%,
+    #f299bb 100%
+  );
+  color: #222020;
+>>>>>>> 53d160f (randomize result page done)
 }
 
 /* highlightted text courtesy of : https://medium.com/@mattlistor/highlight-effect-using-css-204ab4590480 */
@@ -166,10 +188,14 @@ span .visually-hidden {
 .highlighted-text:after {
   background-color: #ffe359;
 <<<<<<< HEAD
+<<<<<<< HEAD
   content: ' ';
 =======
   content: " ";
 >>>>>>> adf1d25 (update homepage and overall style)
+=======
+  content: ' ';
+>>>>>>> 53d160f (randomize result page done)
   height: 50%;
   position: absolute;
   left: 8px;
@@ -217,10 +243,14 @@ span .visually-hidden {
   padding: 14px;
   max-width: 600px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   min-width: 360px;
 =======
   min-width: 450px;
 >>>>>>> d284406 (randmoze page 80%)
+=======
+  min-width: 360px;
+>>>>>>> 53d160f (randomize result page done)
 }
 
 .rating {

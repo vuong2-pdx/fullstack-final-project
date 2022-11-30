@@ -42,19 +42,24 @@ html
 =======
   main.container
     body
-      h3.card-title #{title}
-        if year
-        |  (#{year})
-      div.card
-        div.d-flex.flex-lg-row.flex-column.align-content-stretch
-          img.d-block.mx-2.my-2.align-self-center(src=poster alt='poster' height='417' width='278')
-          div.ratio.ratio-16x9.my-2.mx-2.align-self-xxl-stretch
-            iframe.embed-responsive-item(src=trailer title='trailer' allowfullscreen)
-        div.d-flex.flex-row
-          button source link
-          button source link
-          button source link
-      input.btn.btn-primary.back(type="button" value="Go Back")
+      div.d-flex.flex-column.mx-auto
+        div.card
+          div.d-flex.flex-column
+            div.d-flex.flex-column.flex-lg-row.justify-content-between
+              h3.card-title.mx-auto.mx-lg-0 #{data.title}
+                if year
+                |  (#{data.year})
+              div.mx-auto.mx-lg-0
+                button.btn.btn-outline-dark.addToList(onclick='addToList(' + JSON.stringify(data) + ',' + JSON.stringify(source) + ')') Add to Watch List
+            div.d-flex.flex-lg-row.flex-column.align-content-stretch
+              img.d-block.m-2.mx-auto.mx-lg-0(src=data.poster alt='poster' height='417' width='278')
+              div.ratio.ratio-16x9.m-2.align-self-xxl-stretch
+                iframe.embed-responsive-item(src=trailer title='trailer' allowfullscreen)
+            div.d-flex.flex-row.flex-wrap
+              each item in source
+                a.m-1.btn.btn-secondary(href=item.sourceUurl role='button') #{item.sourceName}
+        div
+          input.btn.btn-primary.mt-2.back(type="button" value="Go Back")
       script(src="/js/randDisplay.js")
 >>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
   include includes/footer.pug

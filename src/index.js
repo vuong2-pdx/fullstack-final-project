@@ -4,8 +4,12 @@ const search = require('./search');
 const app = express();
 const port = process.env.PORT || 5001;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 const { randomize } = require('./randomize');
+=======
+const { randomize, getStreamingSources } = require('./randomize');
+>>>>>>> 53d160f (randomize result page done)
 const movieController = require('./movieController');
 >>>>>>> d284406 (randmoze page 80%)
 
@@ -57,10 +61,10 @@ app.get('/random', async (req, res) => {
   res.render('random', {
     init: 'CLICK ONE TO START',
     type: data.type,
-    title: 'Randomize',
+    title: 'Choose for Me',
     subheading: data.item.title,
     poster: data.item.poster,
-    rating: data.item.user_rating,
+    rating: data.item.user_rating || 'null',
     tmdbType: tmdbType,
     year: data.item.year,
     plot: data.item.plot_overview,
@@ -79,11 +83,11 @@ app.post('/random/:type', async (req, res) => {
   } else {
     data.item = await randomize(type);
   }
-  // console.log(data.item);
 
   res.end();
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> f86784e (randomize from movie or tv or all)
@@ -92,16 +96,37 @@ app.get('/random/randd', (req, res) => {
   res.render('randDisplay');
 =======
 app.get('/random/:id', (req, res) => {
+=======
+app.get('/random/:id', async (req, res) => {
+>>>>>>> 53d160f (randomize result page done)
   const id = req.url.split('/').pop();
   const param = data.item.trailer.toString().split('=').pop();
   const trailer = new URL(param, 'https://www.youtube.com/embed/');
+  let sources = await getStreamingSources(id);
   res.render('randDisplay', {
-    title: data.item.title,
-    year: data.item.year,
-    poster: data.item.poster,
+    data: data.item,
     trailer: trailer,
+    source: sources,
   });
+<<<<<<< HEAD
 >>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
+=======
+  res.end();
+});
+
+app.post('/random/:id/add', async (req, res) => {
+  movieController
+    .addMovie(req.body)
+    .then(() => {
+      console.log('Add success');
+    })
+    .catch((err) => {
+      console.log('Add failed');
+      console.log(err);
+    });
+
+  res.end();
+>>>>>>> 53d160f (randomize result page done)
 });
 
 >>>>>>> d284406 (randmoze page 80%)

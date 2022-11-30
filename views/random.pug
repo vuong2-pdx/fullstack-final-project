@@ -126,8 +126,8 @@ html(lang='en')
                   p.mx-4.rating.bg-success.text-white #{rating}
                 else if rating <= 4
                   p.mx-4.rating.bg-danger.text-white #{rating}
-                else if rating === null
-                  p.mx-4 No
+                else if rating === 'null'
+                  p.mx-4.text-secondary No Rating
                 else
                   p.mx-4.rating.bg-warning.text-dark #{rating}
                 p.mx-4.text-secondary #{tmdbType}
@@ -135,8 +135,9 @@ html(lang='en')
             p.w-75.mx-auto.text-center #{plot}
             div.btn-group.btn-group-toggle.d-flex.mt-3.w-50.h-50.mx-auto.justify-content-center
               label.btn.btn-danger.mx-1.rounded.ynbutton
-                input.btn-check(type="radio" name="yesNo", value=tmdbType)
+                input.btn-check(type="radio" name="yesNo" value=tmdbType)
                 |  👎
+<<<<<<< HEAD
 <<<<<<< HEAD
               a(class="btn btn-success mx-1 rounded ynbutton" href="random/randd", role="button") 👍
     script(src="/randDisplay.js")
@@ -146,6 +147,9 @@ html(lang='en')
 =======
 =======
               a(class="btn btn-success mx-1 rounded ynbutton" href="random/"+id, role="button") 👍
+=======
+              a(class="btn btn-success mx-1 rounded ynbutton" href="random/"+id role="button") 👍
+>>>>>>> 53d160f (randomize result page done)
       else
         div.text-center
           h1.init #{init}

@@ -68,6 +68,7 @@ $('input[name=yesNo]').on('click', function () {
 
 $('.back').on('click', function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
   window.history.back();
 });
 
@@ -112,3 +113,41 @@ function addToList(item, sources) {
   window.history.back();
 });
 >>>>>>> 060a68c (like/dislike buttons properly renered. Liked page with trailer embed.)
+=======
+  window.history.back();
+});
+
+function addToList(item, sources) {
+  let url = `${window.location.href}/add`;
+  console.log(url);
+
+  let data = {
+    movieID: item.id,
+    imdbID: item.imdb_id,
+    title: item.title,
+    type: item.type,
+    year: item.year,
+    poster: item.poster,
+    rating: item.user_rating,
+    plot: item.plot_overview,
+    review: '',
+    watched: false,
+    sources: sources,
+  };
+
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    success: function () {
+      console.log('POST success');
+      $('.addToList').prop('disabled', true);
+      $('.addToList').text('Added');
+    },
+    error: function (err) {
+      console.log('error');
+      console.log(eerr);
+    },
+  });
+}
+>>>>>>> 53d160f (randomize result page done)

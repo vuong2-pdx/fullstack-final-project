@@ -9,6 +9,7 @@ const {
   list, // the whole list of movies and tv shows available in US
 } = require('./loadList.js');
 <<<<<<< HEAD
+<<<<<<< HEAD
 const { base } = require('./Movie.js');
 
 // api key for watchmode
@@ -33,6 +34,12 @@ const {
 // api key for watchmode
 const API_KEY = "XqgRKPmHSMPfDzIWBbyvTxaq6ovVcZezWuqwlFFt";
 >>>>>>> main
+=======
+const { base } = require('./Movie.js');
+
+// api key for watchmode
+const API_KEY = 'lyNhP8irTapb8pjaEm84nyISUQs4wmywHnJNkGdt';
+>>>>>>> 53d160f (randomize result page done)
 // api key for ombd
 const OMDB_API_KEY = "d4eeaaba";
 
@@ -121,8 +128,6 @@ const randomize = (type) => {
   return getData(WATCHMODE_BASE_URL, id);
 };
 
-const getSource = (sourceList) => {};
-
 const getData = async (baseUrl, id) => {
 <<<<<<< HEAD
   const url = new URL(`title/${id}/details/`, baseUrl);
@@ -133,10 +138,13 @@ const getData = async (baseUrl, id) => {
 >>>>>>> main
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // console.log(url);
 
 >>>>>>> f86784e (randomize from movie or tv or all)
+=======
+>>>>>>> 53d160f (randomize result page done)
   let data = {};
 
   await axios
@@ -150,10 +158,14 @@ const getData = async (baseUrl, id) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 53d160f (randomize result page done)
 const getStreamingSources = async (id) => {
   const url = new URL(`title/${id}/sources/`, WATCHMODE_BASE_URL);
   url.searchParams.set('apiKey', API_KEY);
   url.searchParams.set('regions', 'US');
+<<<<<<< HEAD
 
   let data = []; // create a array to return
   await axios
@@ -180,18 +192,33 @@ module.exports = { randomize, getStreamingSources };
 // const getStreamingSouces = async (id) => {
 //   const url = `https://api.watchmode.com/v1/title/${id}/sources/?apiKey=${API_KEY}`;
 //   console.log(url);
+=======
+>>>>>>> 53d160f (randomize result page done)
 
-//   let data = {};
-//   await axios
-//     .get(url)
-//     .then((response) => {
-//       data = response.data;
-//       console.log(data);
-//     })
-//     .catch((err) => console.log(err.message));
+  let data = [];
+  await axios
+    .get(url)
+    .then((response) => {
+      let unique = [];
+      response.data.map((element) => {
+        if (!unique.includes(element.name)) {
+          data.push({ sourceName: element.name, sourceUrl: element.web_url });
+          unique.push(element.name);
+          return true;
+        }
+        return false;
+      });
+    })
+    .catch((err) => console.log(err.message));
+  return data;
+};
 
+<<<<<<< HEAD
 //   return data;
 // };
 
 module.exports = { randomize };
 >>>>>>> f86784e (randomize from movie or tv or all)
+=======
+module.exports = { randomize, getStreamingSources };
+>>>>>>> 53d160f (randomize result page done)
