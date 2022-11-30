@@ -133,7 +133,9 @@ span .visually-hidden {
   height: 60%;
 }
 
-/* movieDisplay.pug styles */
+.poster:hover {
+  transform: scale(1.1);
+}
 
 /* Stars */
 .input {
@@ -146,12 +148,28 @@ span .visually-hidden {
 .star-icon {
   float: right;
   cursor: pointer;
-  color: #f9b008;
+  color: #b88817;
 }
 .star-icon:hover:before,
 .star-icon:hover ~ .star-icon:before,
 .input:checked ~ .star-icon:before {
   content: '\f005';
+}
+
+/*Accessibility*/
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hide-text {
+  text-indent: -9999px;
 }
 
 /* searchResults.pug styles */
